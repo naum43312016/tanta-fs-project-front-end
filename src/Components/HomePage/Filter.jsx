@@ -1,13 +1,12 @@
 import React from 'react';
 import { Row } from 'reactstrap';
-import Filter from './Filter';
 
-const Home = () => {
+const Filter = () => {
     return (
         <div>
-            <Filter />
+
         </div>
     )
 }
 
-export default Home;
+export default Filter;
