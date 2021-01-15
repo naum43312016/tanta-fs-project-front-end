@@ -11,20 +11,27 @@ import TopNavBar from './Components/NavBars/TopNavBar';
 const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [adminConfirmation, setAdminConfirmation] = useState(false);
+  const token = localStorage.getItem('token') || null
+
+  useEffect(() => {
+    if(token) {
+      setAuthenticated(true)
+    }
+  }, [token])
 
   return (
     <Container fluid>
-      <Router>
-        <TopNavBar />
-        <Authentication.Provider value={{ authenticated, setAuthenticated }}>
-          <Switch>
-            <Route path="/home" component={Home} />
-          </Switch>
-          <Switch>
-            <Route path="/settings" component={ProfileSettings} />
-          </Switch>
-        </Authentication.Provider>
-      </Router>
+      <Authentication.Provider value={{ authenticated, setAuthenticated }}>
+        <Router>
+          <TopNavBar />
+            <Switch>
+              <Route path="/home" component={Home} />
+            </Switch>
+            <Switch>
+              <Route path="/settings" component={ProfileSettings} />
+            </Switch>
+        </Router>
+      </Authentication.Provider>
     </Container>
   );
 }

@@ -15,8 +15,8 @@ const validatePassword = (password) => {
 }
 
 const checkFields = (userDetails) => {
-  const { firstname, lastname, email, password, phoneNumber } = userDetails;
-  if (firstname.length <= 2 || lastname.length <= 2) {
+  const { firstName, lastName, email, password, phone } = userDetails;
+  if (firstName.length <= 2 || lastName.length <= 2) {
     return invalidFields('First and last name should contain at least 2 characters');
   }
   if (!validateEmail(email)) {
@@ -25,31 +25,33 @@ const checkFields = (userDetails) => {
   if (!validatePassword(password)) {
     return invalidFields("Your password must have a minimum of 8 characters including at least one number")
   }
-  if (phoneNumber.length < 10) {
+  if (phone.length < 10) {
     return invalidFields("Please enter a valid phone number")
   }
   return true;
 }
 
+
 const Signup = (userDetails, setAuthenticated) => {
   if (checkFields(userDetails) === true) {
     return axios.post(base_URL + "/signup", userDetails)
       .then(
-        (res) => res.status === 200 ? (localStorage.setItem("token", res.data.token), signUpSucces(), localStorage.setItem('firstname', res.data.firstname), localStorage.setItem("sessionID", res.data._id),
-          setAuthenticated(true)) : null
+        (res) => res.status === 200 ? (localStorage.setItem("token", res.data.token), signUpSucces(), localStorage.setItem('firstName', res.data.user.firstName), localStorage.setItem("sessionID", res.data.user._id),
+                  setAuthenticated(true)) : null
       )
-      .catch(err => invalidFields('User with this email address exists already'))
+      .catch(err => console.error(err))
   }
 };
 
 const SignIn = (userDetails, setAuthenticated) => {
   return axios.post(base_URL + "/login", userDetails)
     .then(
-      (res) => res.status === 200 ? (localStorage.setItem("token", res.data.token), signInSuccess(), localStorage.setItem("firstname", res.data.firstname), localStorage.setItem("sessionID", res.data._id),
-        setAuthenticated(true)) : null
+      (res) => res.status === 200 ? (localStorage.setItem("token", res.data.token), signInSuccess(), localStorage.setItem("firstName", res.data.user.firstName), localStorage.setItem("sessionID", res.data.user._id),
+      setAuthenticated(true)) : null
     )
-    .catch((err) => wrongCredentials("Wrong credentials"));
+    .catch((err) => console.error(err));
 };
+
 
 const getCookies = (setAuthenticated) => {
   const token = localStorage.getItem("token");

@@ -21,7 +21,7 @@ const ProfileSettings = () => {
                 <Input className="settings-input" name="lastname" placeholder="Last Name" onChange={e => handleChange(e)}/>
                 <Input className="settings-input" name="phone" placeholder="Phone" onChange={e => handleChange(e)}/>
                 <Input className="settings-input" type="email" name="email" placeholder="Email" onChange={e => handleChange(e)}/>
-                <Button color="primary" > Save </Button>
+                <Button color="secondary" > Save </Button>
             </Form>
         </Container>
     )
