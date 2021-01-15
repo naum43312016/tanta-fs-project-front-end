@@ -11,7 +11,7 @@ const Filter = () => {
         axios.get('http://localhost:3001/category/all')
         .then(res => setCategories(res.data))
         .catch(err => console.error(err))
-    }, [categories])
+    }, [])
 
     return (
         <div className="filter-container">

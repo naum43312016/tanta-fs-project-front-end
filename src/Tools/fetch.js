@@ -34,7 +34,7 @@ const checkFields = (userDetails) => {
 
 const Signup = (userDetails, setAuthenticated) => {
   if (checkFields(userDetails) === true) {
-    return axios.post('random', userDetails)
+    return axios.post(`${base_URL}/signup`, userDetails)
       .then(
         (res) => res.status === 200 ? (localStorage.setItem("token", res.data.token), signUpSucces(), localStorage.setItem('firstName', res.data.user.firstName), localStorage.setItem("sessionID", res.data.user._id),
                   setAuthenticated(true)) : null
@@ -44,7 +44,7 @@ const Signup = (userDetails, setAuthenticated) => {
 };
 
 const SignIn = (userDetails, setAuthenticated) => {
-  return axios.post('random', userDetails)
+  return axios.post(`${base_URL}/login`, userDetails)
     .then(
       (res) => res.status === 200 ? (localStorage.setItem("token", res.data.token), signInSuccess(), localStorage.setItem("firstName", res.data.user.firstName), localStorage.setItem("sessionID", res.data.user._id),
       setAuthenticated(true)) : null

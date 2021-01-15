@@ -9,7 +9,7 @@ const Logout = (props) => {
             X
         </Button>
         </Row>
-        <ModalHeader style={{backgroundColor: "#f8961e", color:"white"}} className="mt-n4">
+        <ModalHeader style={{backgroundColor: "#FFD266", color:"white"}} className="mt-n4">
             <h3>Are you sure ?</h3>
         </ModalHeader>
         <ModalFooter style={{display: "flex", justifyContent:"center"}}>

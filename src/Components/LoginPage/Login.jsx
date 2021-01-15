@@ -29,10 +29,6 @@ const Login = (props) => {
     })
   }
 
-  useEffect(() => {
-    console.log(email)
-  }, [])
-
   const LoginUser = () => {
     const userDetails = { ...userInfos, role: "USER_STATUS" }
     SignIn(userDetails, setAuthenticated)
