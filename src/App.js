@@ -7,24 +7,31 @@ import './styles/App.css';
 import Home from './Components/HomePage/Home';
 import ProfileSettings from './Components/Profile/ProfileSettings';
 import TopNavBar from './Components/NavBars/TopNavBar';
+import MyItems from './Components/Profile/MyItems'
 
 const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
   const [adminConfirmation, setAdminConfirmation] = useState(false);
+  const token = localStorage.getItem('token') || null
+
+  useEffect(() => {
+    if(token) {
+      setAuthenticated(true)
+    }
+  }, [token])
 
   return (
     <Container fluid>
-      <Router>
-        <TopNavBar />
-        <Authentication.Provider value={{ authenticated, setAuthenticated }}>
+      <Authentication.Provider value={{ authenticated, setAuthenticated }}>
+        <Router>
+          <TopNavBar />
           <Switch>
-            <Route path="/" component={Home} />
+              <Route path="/my-items" component={MyItems}/>
+              <Route path="/settings" component={ProfileSettings} />
+              <Route path="/" component={Home} />
           </Switch>
-          <Switch>
-            <Route path="/settings" component={ProfileSettings} />
-          </Switch>
-        </Authentication.Provider>
-      </Router>
+        </Router>
+      </Authentication.Provider>
     </Container>
   );
 }

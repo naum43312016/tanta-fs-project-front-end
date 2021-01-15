@@ -69,6 +69,7 @@ body, html, form, button {
 .top-navbar {
   background-color: #FFD266;
   height: 55px;
+  justify-content: space-around;
   align-items: center;
   border: none;
 }
