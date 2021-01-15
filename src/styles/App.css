@@ -5,10 +5,13 @@
   box-sizing: border-box;
 }
 
+<<<<<<< HEAD:src/App.css
+=======
 body, html, form, button {
   font-family: 'Montserrat', sans-serif !important;
 }
 
+>>>>>>> 1d6cac9ed2847678eb09136ca5d1dc2f7852e0ed:src/styles/App.css
 .App {
   text-align: center;
 }
@@ -39,7 +42,7 @@ body, html, form, button {
 }
 
 .signup-modal {
-  top: 8%;
+  top: 6%;
   font-family: 'Andika New Basic', sans-serif;
 }
 
@@ -64,7 +67,7 @@ body, html, form, button {
 }
 
 .top-navbar {
-  background-color: #f8961e;
+  background-color: #FFD266;
   height: 55px;
   justify-content: space-around;
   align-items: center;
@@ -91,3 +94,80 @@ body, html, form, button {
   position: absolute;
   top: 10%;
 }
+
+input:focus {
+  outline: none;
+}
+
+.searchbar {
+  outline: none;
+  border: none;
+}
+
+.btn:focus, .btn:active, button, button:focus, button:active {
+  border: none;
+  outline: none;
+}
+
+input {
+  border: lightblue 1px solid;
+}
+@keyframes lift {
+  to {
+    margin-top: -8px;
+  }
+}
+
+.filter-btn {
+  padding: 30px;
+  background-color: transparent;
+  border: none;
+  word-wrap: break-word;
+  background-color: transparent;
+  border-bottom: lightgrey 1px solid;
+  transition: border-bottom 0.5s, background-color 0.5s;
+  width: 120px;
+}
+
+.filter-btn:hover {
+  background-color: #F0BE6D;
+  border-bottom: #A6A8AC 2px solid;
+  animation-name: lift;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+label {
+  display: block;
+}
+
+.item-card {
+  margin:"0 10px 10px 10px";
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+@media (max-width: 1300px) {
+  .card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 1020px) {
+  .card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .card-container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+

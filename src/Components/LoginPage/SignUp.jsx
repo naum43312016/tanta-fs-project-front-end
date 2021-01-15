@@ -3,7 +3,7 @@ import { Form, Container, Row, Label, Input, FormGroup, Button, ModalHeader, Mod
 import { useContext, useState } from "react";
 import { Link, Router } from "react-router-dom";
 import { Signup } from '../../Tools/fetch';
-import { Authentication } from '../../contexts/Authentication';
+import { Authentication } from '../../Contexts/Authentication';
 import { invalidFields } from '../../Tools/WebsiteResponses';
 
 const SignUp = (props) => {
@@ -160,7 +160,6 @@ const SignUp = (props) => {
                   </Link>
               </ModalFooter>
             </Container>
-   
   );
 };
 

@@ -3,7 +3,7 @@ import { Container, Form, Label, Input, FormGroup, Button, ModalHeader, ModalBod
 import { useContext, useState } from "react";
 import { Link, Router } from "react-router-dom";
 import { SignIn } from '../../Tools/fetch';
-import { Authentication } from '../../contexts/Authentication';
+import { Authentication } from '../../Contexts/Authentication';
 
 const Login = (props) => {
   const { authenticated, setAuthenticated }  = useContext(Authentication);
@@ -28,6 +28,10 @@ const Login = (props) => {
       [event.target.name] : event.target.value
     })
   }
+
+  useEffect(() => {
+    console.log(email)
+  }, [])
 
   const LoginUser = () => {
     const userDetails = { ...userInfos, role: "USER_STATUS" }
