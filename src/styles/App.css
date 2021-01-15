@@ -5,8 +5,8 @@
   box-sizing: border-box;
 }
 
-body, html {
-  font-family: 'Montserrat', sans-serif;
+body, html, form, button {
+  font-family: 'Montserrat', sans-serif !important;
 }
 
 .App {
