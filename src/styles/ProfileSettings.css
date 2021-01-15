@@ -11,20 +11,20 @@
   border-radius: 9px;
 }
 .settings-form h3 {
-    margin: 9px;
-    font-weight: ;
-    color: white
+  margin: 9px;
+  font-weight: ;
+  color: white;
 }
 .settings-input {
-    margin: 10px;
-    width: 95% !important;
-    border: 1px solid #f8961e !important;
+  margin: 10px;
+  width: 95% !important;
+  border: 1px solid #f8961e !important;
 }
 
 .settings-input:focus {
-    box-shadow: none !important;
+  box-shadow: none !important;
 }
 
 button {
-    margin: 9px !important;
+  margin: 9px !important;
 }
