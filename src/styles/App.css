@@ -5,6 +5,13 @@
   box-sizing: border-box;
 }
 
+<<<<<<< HEAD:src/App.css
+=======
+body, html, form, button {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+>>>>>>> 1d6cac9ed2847678eb09136ca5d1dc2f7852e0ed:src/styles/App.css
 .App {
   text-align: center;
 }

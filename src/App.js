@@ -3,8 +3,9 @@ import { Authentication } from './Contexts/Authentication';
 import { Container, Navbar } from "reactstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoginPage from './Components/LoginPage/LoginPage';
-import './App.css';
+import './styles/App.css';
 import Home from './Components/HomePage/Home';
+import ProfileSettings from './Components/Profile/ProfileSettings';
 import TopNavBar from './Components/NavBars/TopNavBar';
 
 const App = () => {
@@ -18,6 +19,9 @@ const App = () => {
         <Authentication.Provider value={{ authenticated, setAuthenticated }}>
           <Switch>
             <Route path="/" component={Home} />
+          </Switch>
+          <Switch>
+            <Route path="/settings" component={ProfileSettings} />
           </Switch>
         </Authentication.Provider>
       </Router>
