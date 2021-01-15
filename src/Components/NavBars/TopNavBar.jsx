@@ -3,7 +3,7 @@ import { Row, Button, Modal } from 'reactstrap';
 import { Authentication } from '../../contexts/Authentication';
 import { Link, Route } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faCog, faUser } from '@fortawesome/free-solid-svg-icons'
 import SignUp from '../LoginPage/SignUp';
 import Login from '../LoginPage/Login';
 import Logout from '../LoginPage/Logout'
@@ -30,18 +30,21 @@ const TopNavBar = () => {
                 </Link>
             {!authenticated && 
                     <Link to="/login">
-                        <Button color="secondary" className="nav-button rounded" onClick={() => setOpenLogin(true)}>Login/Signup</Button>
+                        <Button color="light" className="nav-button rounded" onClick={() => setOpenLogin(true)}>Login/Signup</Button>
                     </Link>
             }
             {authenticated && 
             <>
-                        <Button onClick={()=>setOpenLogout(true)} color="secondary" className="nav-button rounded" >Logout</Button>
-            <Link to="/settings">
-                <Button  color="secondary" className="nav-button rounded" >Settings</Button>
+
+            <Link to={"/my-items"}>
+            <FontAwesomeIcon style={{ color: "white" }} icon={faUser}  size="2x" ></FontAwesomeIcon>
             </Link>
+            <Link to="/settings">
+            <FontAwesomeIcon style={{color: "white" }} icon={faCog} size="2x"></FontAwesomeIcon>
+            </Link>
+            <Button onClick={()=>setOpenLogout(true)} color="light" className="nav-button rounded" >Logout</Button>
             </>
             }
-            <FontAwesomeIcon style={{ height: "24px", color: "white" }} icon={faUser} className="col-1"></FontAwesomeIcon>
             </Row>
             {!authenticated && 
             <>

@@ -13,6 +13,7 @@ const ProfileSettings = () => {
         })
     }
 
+
     return (
         <Container>
             <Form action="" className="settings-form" onSubmit={e=> e.preventDefault()}>
@@ -21,7 +22,7 @@ const ProfileSettings = () => {
                 <Input className="settings-input" name="lastname" placeholder="Last Name" onChange={e => handleChange(e)}/>
                 <Input className="settings-input" name="phone" placeholder="Phone" onChange={e => handleChange(e)}/>
                 <Input className="settings-input" type="email" name="email" placeholder="Email" onChange={e => handleChange(e)}/>
-                <Button color="secondary" > Save </Button>
+                <Button color="light" > Save </Button>
             </Form>
         </Container>
     )

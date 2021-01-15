@@ -7,6 +7,7 @@ import './styles/App.css';
 import Home from './Components/HomePage/Home';
 import ProfileSettings from './Components/Profile/ProfileSettings';
 import TopNavBar from './Components/NavBars/TopNavBar';
+import MyItems from './Components/Profile/MyItems'
 
 const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
@@ -24,12 +25,11 @@ const App = () => {
       <Authentication.Provider value={{ authenticated, setAuthenticated }}>
         <Router>
           <TopNavBar />
-            <Switch>
-              <Route path="/home" component={Home} />
-            </Switch>
-            <Switch>
+          <Switch>
+              <Route path="/my-items" component={MyItems}/>
               <Route path="/settings" component={ProfileSettings} />
-            </Switch>
+              <Route path="/" component={Home} />
+          </Switch>
         </Router>
       </Authentication.Provider>
     </Container>
