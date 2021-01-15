@@ -6,28 +6,33 @@ import { SignIn } from '../../Tools/fetch';
 import { Authentication } from '../../Contexts/Authentication';
 
 const Login = (props) => {
-  const { setAuthenticated } = useContext(Authentication);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { authenticated, setAuthenticated }  = useContext(Authentication);
+  const [userInfos, setUserInfos] = useState({
+    email: '',
+    password: '',
+  })
 
   const switchToSignUp = () => {
     props.setOpenLogin(false);
     props.setOpenSignup(true);
-    setEmail('');
-    setPassword('');
-  };
-
-  useEffect(() => {
-    console.log(email)
-  }, [])
+    setUserInfos({
+      ...userInfos,
+      email: '',
+      password: '',
+    })
+    };
+  
+  const handleChange = (event) => {
+    setUserInfos({
+      ...userInfos,
+      [event.target.name] : event.target.value
+    })
+  }
 
   const LoginUser = () => {
-    const userDetails = { email, password, role: "USER_STATUS" }
-    SignIn(userDetails, setAuthenticated);
+    const userDetails = { ...userInfos, role: "USER_STATUS" }
+    SignIn(userDetails, setAuthenticated)
   };
-
-  useEffect(() => {
-  }, [password]);
 
   return (
     <Container>
@@ -38,13 +43,13 @@ const Login = (props) => {
         </Button>
         </Link>
       </Row>
-      <ModalHeader style={{backgroundColor: "#B1DEF5"}} className="mt-n4">Login</ModalHeader>
+    <ModalHeader style={{backgroundColor: "#B1DEF5"}} className="mt-n4">Login</ModalHeader>
       <ModalBody>
         <Form>
           <FormGroup>
             <Label for="exampleEmail">Email</Label>
             <Input
-              onChange={(event) => setEmail(event.target.value)}
+              onChange={(event) => handleChange(event)}
               type="email"
               name="email"
               id="exampleEmail"
@@ -54,7 +59,7 @@ const Login = (props) => {
           <FormGroup>
             <Label for="examplePassword">Password</Label>
             <Input
-              onChange={(event) => setPassword(event.target.value)}
+              onChange={(event) => handleChange(event)}
               type="password"
               name="password"
               id="examplePassword"
@@ -72,6 +77,8 @@ const Login = (props) => {
           </Button>
         </Link>
       </ModalFooter>
+
+
     </Container>
   );
 };

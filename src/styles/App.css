@@ -62,6 +62,7 @@
 .top-navbar {
   background-color: #5BA9E6;
   height: 55px;
+  justify-content: space-around;
   align-items: center;
   border: none;
 }
