@@ -54,7 +54,7 @@ const SignUp = (props) => {
                 </Button>
                 </Link>
               </Row>
-              <ModalHeader className="mt-n4">Create Account</ModalHeader>
+              <ModalHeader style={{backgroundColor: "#B1DEF5"}} className="mt-n4">Create Account</ModalHeader>
               <ModalBody>
                 <Form>
                   <div className="d-flex flex-row">

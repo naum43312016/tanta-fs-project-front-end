@@ -43,7 +43,7 @@ const Login = (props) => {
         </Button>
         </Link>
       </Row>
-    <ModalHeader style={{backgroundColor: "#f8961e"}} className="mt-n4">Login</ModalHeader>
+    <ModalHeader style={{backgroundColor: "#B1DEF5"}} className="mt-n4">Login</ModalHeader>
       <ModalBody>
         <Form>
           <FormGroup>
