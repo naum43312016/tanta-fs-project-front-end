@@ -1,0 +1,30 @@
+.settings-form {
+  margin-top: 45px !important;
+  padding: 10px;
+  margin: 0 auto;
+  max-width: 550px;
+  border: 1px solid #f8961e;
+  background-color: #f8961e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 9px;
+}
+.settings-form h3 {
+    margin: 9px;
+    font-weight: ;
+    color: white
+}
+.settings-input {
+    margin: 10px;
+    width: 95% !important;
+    border: 1px solid #f8961e !important;
+}
+
+.settings-input:focus {
+    box-shadow: none !important;
+}
+
+button {
+    margin: 9px !important;
+}
