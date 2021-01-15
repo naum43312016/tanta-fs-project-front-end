@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Authentication } from './contexts/Authentication';
+import { Authentication } from './Contexts/Authentication';
 import { Container, Navbar } from "reactstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoginPage from './Components/LoginPage/LoginPage';
@@ -17,7 +17,7 @@ const App = () => {
         <TopNavBar />
         <Authentication.Provider value={{ authenticated, setAuthenticated }}>
           <Switch>
-            <Route path="/home" component={Home} />
+            <Route path="/" component={Home} />
           </Switch>
         </Authentication.Provider>
       </Router>
