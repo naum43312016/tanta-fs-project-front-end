@@ -51,10 +51,6 @@
   margin-top: 5em;
 }
 
-.search-button {
-  width: 200px;
-}
-
 .logn-signup-buttons {
   background-color: #f77c06;
 }
@@ -154,18 +150,13 @@ label {
   white-space:"nowrap";
 }
 
-.category-input {
-  margin-right: 1em;
-}
-
 .search-bar {
-  margin-top: 2%;
-  height:"70px";
-  border-bottom:"2px solid lightgrey";
-  width: 100%;
+  height: 70px;
+  border-bottom: 2px solid lightgrey;
   text-align: center;
   justify-content: center;
   align-items: center;
+  background-color: lightgrey;
 }
 
 @media (max-width: 1300px) {
@@ -180,7 +171,7 @@ label {
     display: none;
   }
   .category-input {
-    margin-right: 4em;
+    margin-right: 2px;
   }
 }
 
