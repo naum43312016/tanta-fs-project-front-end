@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Authentication } from './Contexts/Authentication';
 import { Container, Navbar } from "reactstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import LoginPage from './Components/LoginPage/LoginPage';
 import './Styles/App.css';
 import Home from './Components/HomePage/Home';
 import ProfileSettings from './Components/Profile/ProfileSettings';

@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import {Container, Form, Input, Button} from 'reactstrap'
-import '../../styles/ProfileSettings.css'
+import {Container,Form, Input, Button} from 'reactstrap'
+import '../../Styles/ProfileSettings.css'
 import { submitProfileChanges } from '../../Tools/fetch';
 
 const ProfileSettings = () => {

@@ -158,6 +158,16 @@ label {
   margin-right: 1em;
 }
 
+.search-bar {
+  margin-top: 2%;
+  height:"70px";
+  border-bottom:"2px solid lightgrey";
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
 @media (max-width: 1300px) {
   .card-container {
     display: grid;
@@ -192,6 +202,26 @@ label {
 @media (max-width: 770px) {
   .filter-btn {
     display: none;
+  }
+}
+
+@media (max-width: 499px) {
+  .top-navbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  .tanta-logo {
+    display: none;
+  }
+  .search-bar {
+    border: none;
+    margin-top: 10%;
+    margin-right: 5%;
+  }
+  .searchbar-label {
+    display: block;
   }
 }
 

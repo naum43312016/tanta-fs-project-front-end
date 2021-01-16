@@ -1,6 +1,6 @@
 import { Button } from "reactstrap"
 import ItemCard from "../HomePage/ItemCard"
-import '../../styles/MyItems.css'
+import '../../Styles/MyItems.css'
 import { useState } from "react"
 
 const MyItems = (props) => {
