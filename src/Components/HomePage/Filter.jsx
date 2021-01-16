@@ -1,36 +1,21 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { Input, Row, Button, Dropdown, DropdownToggle, DropdownItem, DropdownMenu } from 'reactstrap';
+import React from 'react';
+import { Input, Row } from 'reactstrap';
 
-const Filter = () => {
-    const [category, setCategory] = useState('')
-    const BASE_URL = process.env.REACT_APP_BASE_URL;
+const Filter = (props) => {
 
     const buttonCategory = (e) => {
-        setCategory(e.target.innerText);
+        props.setCategory(e.target.innerText);
     }
 
     const inputCategory = (e) => {
-        setCategory(e.target.value);
+        props.setCategory(e.target.value);
     }
-
-    useEffect(() => { //getting all categories on first app render
-        axios.get(BASE_URL + '/category/all')
-        .then(res => console.log(res))
-        .catch(err => console.log('There was an issue getting the items'))
-    }, [])
-
-    useEffect(() => { //fetching categories
-        axios.get(BASE_URL + `/category?name=${category}`)
-        .then(res => console.log(res))
-        .catch(err => console.log('Error fetching the requested category'));
-    }, [category])
     
     return (
         <Row style={{ height: "100px", paddingTop: "40px", marginBottom: "105px" }} className="align-items-center justify-content-center">
             <div className="category-input offset-1 col-md-2 col-6 col-3">
                 <label>Find category</label>
-                <Input onChange={inputCategory} value={category} type="select">
+                <Input onChange={inputCategory} value={props.category} type="select">
                     <option value="" selected>Choose Here</option>
                     <option value="Bathroom">Bathroom</option>
                     <option value="Clothing">Clothing</option>
