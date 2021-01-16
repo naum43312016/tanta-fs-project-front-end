@@ -3,14 +3,14 @@ import { Authentication } from './Contexts/Authentication';
 import { Container, Navbar } from "reactstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoginPage from './Components/LoginPage/LoginPage';
-import './styles/App.css';
+import './Styles/App.css';
 import Home from './Components/HomePage/Home';
 import ProfileSettings from './Components/Profile/ProfileSettings';
 import TopNavBar from './Components/NavBars/TopNavBar';
 import MyItems from './Components/Profile/MyItems'
 
 const App = () => {
-  const [authenticated, setAuthenticated] = useState(true); // true just for now
+  const [authenticated, setAuthenticated] = useState(false); // true just for now
   const [adminConfirmation, setAdminConfirmation] = useState(false);
   const token = localStorage.getItem('token') || null
 
@@ -28,6 +28,7 @@ const App = () => {
           <Switch>
               <Route path="/my-items" component={MyItems}/>
               <Route path="/settings" component={ProfileSettings} />
+              <Route path="/item" />
               <Route path="/" component={Home} />
           </Switch>
         </Router>

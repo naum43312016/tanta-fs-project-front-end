@@ -107,14 +107,14 @@ input {
 }
 
 .filter-btn {
-  padding: 30px;
+  padding: 26px;
   background-color: transparent;
   border: none;
   word-wrap: break-word;
   background-color: transparent;
   border-bottom: lightgrey 1px solid;
   transition: background-color 0.3s;
-  width: 120px;
+  width: 160px;
 }
 
 .filter-btn:focus, .filter-btn:active {
@@ -148,10 +148,30 @@ label {
   grid-auto-rows: minmax(350px, auto);
 }
 
+.overflow-dots {
+  text-overflow:"ellipsis";
+  overflow:"hidden";
+  white-space:"nowrap";
+}
+
+.category-input {
+  margin-right: 1em;
+}
+
 @media (max-width: 1300px) {
   .card-container {
     display: grid;
+    width: ;
     grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 1090px) {
+  .filter-btn:nth-child(5) {
+    display: none;
+  }
+  .category-input {
+    margin-right: 4em;
   }
 }
 
@@ -169,8 +189,9 @@ label {
   }
 }
 
-.overflow-dots {
-  text-overflow:"ellipsis";
-  overflow:"hidden";
-  white-space:"nowrap";
+@media (max-width: 770px) {
+  .filter-btn {
+    display: none;
+  }
 }
+

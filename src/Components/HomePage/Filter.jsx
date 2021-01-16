@@ -2,29 +2,40 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Input, Row, Button, Dropdown, DropdownToggle, DropdownItem, DropdownMenu } from 'reactstrap';
 const Filter = () => {
-    const [categories, setCategories] = useState(null)
-    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [category, setCategory] = useState('')
 
-    const toggle = () => setDropdownOpen(prevState => !prevState);
+    const buttonCategory = (e) => {
+        setCategory(e.target.innerText);
+    }
 
-    useEffect(() => {
-        axios.get('http://localhost:3001/category/all')
-        .then(res => setCategories(res.data))
-        .catch(err => console.error(err))
-    }, [])
+    const inputCategory = (e) => {
+        setCategory(e.target.value);
+    }
 
+    useEffect(() => { //fetching categories
+        
+    }, [category])
+    
     return (
-        <Row style={{height:"100px", paddingTop:"40px", marginBottom:"115px"}} className="align-items-center ml-4">
-            <div className="offset-sm-1 col-sm-2 mr-sm-5 col-3">
-                <label>Find by category</label>
-                <Input type="select">
-                    <option value="" selected>Choose here</option>
+        <Row style={{ height: "100px", paddingTop: "40px", marginBottom: "105px" }} className="align-items-center ml-3 justify-content-center">
+            <div className="category-input offset-1 col-md-2 col-6 col-3">
+                <label>Find category</label>
+                <Input onChange={inputCategory} value={category} type="select">
+                    <option value="" selected>Choose Here</option>
+                    <option value="Bathroom">Bathroom</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Furniture">Furniture</option>
+                    <option value="Gaming">Gaming</option>
+                    <option value="Garden">Garden</option>
+                    <option value="Kitchen">Kitchen</option>
+                    <option value="PCs and Laptops">PCs and Laptops</option>
+                    <option value="Sports">Sports</option>
                 </Input>
             </div>
-            <button className="filter-btn col-2">Furniture</button>
-            <button className="filter-btn col-2">Kitchen</button>
-            <button className="filter-btn col-2">Garden</button>
-            <button className="filter-btn col-2">Electronics</button>
+            <button className="filter-btn col-2" onClick={buttonCategory}>Furniture</button>
+            <button className="filter-btn col-2" onClick={buttonCategory}>Kitchen</button>
+            <button className="filter-btn col-2" onClick={buttonCategory}>Garden</button>
+            <button className="filter-btn col-2" onClick={buttonCategory}>Electronics</button>
         </Row>
     )
 }
