@@ -80,4 +80,21 @@ const updatedProfile = (msg, icon) => {
   })
 }
 
-export { invalidFields, wrongCredentials, signUpSucces, signInSuccess, noResults, petUploaded, docDeleted, formIssue, updatedProfile };
+const confirmLogout = (setAuthenticated, setOpenSignup, ) => {
+  return Swal.fire({
+    text: "Logout?",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      setAuthenticated(false);
+      setOpenSignup(false);
+      localStorage.clear();
+    }
+  })
+}
+
+export { invalidFields, wrongCredentials, signUpSucces, signInSuccess, noResults, petUploaded, docDeleted, formIssue, updatedProfile, confirmLogout };

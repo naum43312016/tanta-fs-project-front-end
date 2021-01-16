@@ -10,7 +10,7 @@ import TopNavBar from './Components/NavBars/TopNavBar';
 import MyItems from './Components/Profile/MyItems'
 
 const App = () => {
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated, setAuthenticated] = useState(true); // true just for now
   const [adminConfirmation, setAdminConfirmation] = useState(false);
   const token = localStorage.getItem('token') || null
 
