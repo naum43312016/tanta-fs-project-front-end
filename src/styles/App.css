@@ -171,7 +171,6 @@ label {
 @media (max-width: 1300px) {
   .card-container {
     display: grid;
-    width: ;
     grid-template-columns: 1fr 1fr 1fr;
   }
 }

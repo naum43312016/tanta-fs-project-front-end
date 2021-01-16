@@ -16,7 +16,7 @@ const Filter = (props) => {
             <div className="category-input offset-1 col-md-2 col-6 col-3">
                 <label>Find category</label>
                 <Input onChange={inputCategory} value={props.category} type="select">
-                    <option value="" selected>Choose Here</option>
+                    <option value="" defaultValue>Choose Here</option>
                     <option value="Bathroom">Bathroom</option>
                     <option value="Clothing">Clothing</option>
                     <option value="Electronics">Electronics</option>

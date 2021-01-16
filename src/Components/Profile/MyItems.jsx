@@ -1,5 +1,5 @@
 import { Button } from "reactstrap"
-import ItemCard from "../HomePage/ItemCard"
+import ItemCard from "../HomePage/ItemCards"
 import '../../Styles/MyItems.css'
 import { useState } from "react"
 
