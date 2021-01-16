@@ -27,7 +27,10 @@ const Home = () => {
         <div>
             <SearchBar search={search} setSearch={setSearch} />
             <Filter category={category} setCategory={setCategory} />
-            <ItemCard cards={cards}/>
+            <div className="category-title">
+                <p>{category === "" ? "All Items" : category}</p>
+            </div>
+            <ItemCard cards={cards} />
         </div>
     )
 }

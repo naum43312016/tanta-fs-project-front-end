@@ -12,7 +12,7 @@ const Filter = (props) => {
     }
     
     return (
-        <Row style={{ height: "100px", marginBottom: "60px", marginTop:"40px"}} className="align-items-center justify-content-center">
+        <Row style={{ height: "100px", marginBottom: "40px", marginTop:"45px"}} className="filter-row align-items-center justify-content-center">
             <div className="category-input offset-sm-1 offset-0 col-md-2 mb-sm-0 mb-4 col-6">
                 <label>Find category</label>
                 <Input onChange={inputCategory} value={props.category} type="select">
