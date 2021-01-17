@@ -2,11 +2,10 @@ import axios from 'axios';
 import { useEffect, useState } from 'react'
 import {Container,Form, Input, Button} from 'reactstrap'
 import '../../Styles/ProfileSettings.css'
-import dotenv from 'dotenv'
+import {BASE_URL} from '../HomePage/Home'
 
 const ProfileSettings = () => {
     const [profileInfos, setProfileInfos] = useState(null)
-    const BASE_URL = process.env.REACT_APP_BASE_URL;
     const userID = localStorage.getItem('sessionID')
 
     const handleChange = (e) => {

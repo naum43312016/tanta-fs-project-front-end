@@ -4,15 +4,18 @@ import axios from 'axios';
 import { useEffect, useRef, useState } from 'react'
 import {Container,Form, Input, Button, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
 import '../../Styles/AddItem.css'
-import dotenv from 'dotenv'
+import { invalidFields } from '../../Tools/WebsiteResponses';
+import { itemUploaded } from '../../Tools/WebsiteResponses';
+import {Redirect} from 'react-router'
+import {BASE_URL} from '../HomePage/Home'
 
 const AddItem = () => {
     const [itemInfos, setItemInfos] = useState(null)
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [categories, setCategories] = useState({categories: null, selected: null})
     const [pic, setPic] = useState({selectedFile: null})
+    const [redirect, setRedirect] = useState(false) // in case of success
 
-    const baseURL = process.env.REACT_APP_BASE_URL
     const toggle = () => setDropdownOpen(prevState => !prevState);
   
     const ref = useRef(null)
@@ -24,7 +27,7 @@ const AddItem = () => {
         })
     }
     const imageUploadStyle = {
-        color: "#5BA9E6", 
+        color: "#4a81ff", 
         fontSize: "35px",
     }
 
@@ -39,21 +42,30 @@ const AddItem = () => {
         for(let key in itemInfos) {
             data.append(key, itemInfos[key])
         }
-        data.append('image', pic.selectedFile, `${Date.now()}-${pic.selectedFile.name}`)
-        for(let pairs of data.entries()) {
-            console.log(pairs)
+        if(pic.selectedFile) {
+            data.append('image', pic.selectedFile, `${Date.now()}-${pic.selectedFile.name}`)
         }
-        axios.post(`${baseURL}/item`, data, {headers: {'Authorization' : 'Bearer ' + localStorage.getItem('token')}})
-            .then(response => console.log(response.data))
-            .catch(err => console.log(err))
+        axios.post(`${BASE_URL}/item`, data, {headers: {'Authorization' : 'Bearer ' + localStorage.getItem('token')}})
+            .then(itemUploaded().then(setRedirect(true))) // if success so set success & redirect to homepage
+            .catch(err => {
+                // fetch error message from server
+                const error = err.response.data 
+                const errorMessages = error.message || error.category || error.name || error.condition || error.description || error.price 
+                invalidFields(errorMessages) // else show error message
+            })
     }
 
     useEffect(() => {
-        axios.get(`${baseURL}/category/all`)
+        axios.get(`${BASE_URL}/category/all`)
         .then(res => setCategories({...categories, categories: res.data}))
         .catch(err => console.error(err))
     }, [])
 
+    if(redirect) {
+        return (
+            <Redirect to={BASE_URL}/>
+        )
+    }
     return (
         <Container>
         <Form action="" className="add-item-form" onSubmit={e=> postItem(e)} encType="multipart/form-data">

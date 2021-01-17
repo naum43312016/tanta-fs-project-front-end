@@ -1,8 +1,6 @@
+import {BASE_URL as base_URL} from '../Components/HomePage/Home'
 const axios = require('axios');
-
 const { invalidFields, wrongCredentials, signUpSucces, signInSuccess, updatedProfile } = require('./WebsiteResponses');
-
-const base_URL = "http://localhost:3001";
 
 const validateEmail = (email) => {
   const re = /\S+@\S+\.\S+/;
