@@ -17,7 +17,7 @@ const ItemCard = (props) => {
                         <div style={{width:"100%", height:"230px", backgroundImage: `url(${item.imageUrl})`}} className="card-img" top width="100%" alt={item.name} />
                     </Link>
                     <CardBody className="overflow-dots">
-                        <Row  >
+                        <Row>
                             <CardTitle tag="h5" className="col-10">{item.name}</CardTitle>
                             <p>{item.price} <FontAwesomeIcon style={{color:"orange", fontSize:"20px"}} icon={faCoins} /></p>
                         </Row>
