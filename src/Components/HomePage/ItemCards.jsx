@@ -9,8 +9,8 @@ import { faCoins } from '@fortawesome/free-solid-svg-icons'
 const ItemCard = (props) => {
     return (
         <div style={{ width: "80%", marginLeft: "10%" }} className="card-container mt-5 mb-5">
-            {props.cards.map((item) => {
-                return (<Card>
+            {props.cards.map((item, index) => {
+                return (<Card key={index}>
                     <Link to={`/item/${item._id}`}  >
                         <CardImg style={{maxHeight:"200px"}} top width="100%" src={item.imageUrl} alt="Card image cap" />
                     </Link>

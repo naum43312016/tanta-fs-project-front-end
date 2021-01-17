@@ -27,9 +27,9 @@
   .add-item-form > button {
     margin: 9px !important;
     padding: 10px 15px !important;
-    font-weight: 600 !important;
     font-size: 20px;
-    color: #5ba9e6;
+    color: #000000;
+    border-radius: 100px !important;
     margin-bottom: 20px !important;
   }
   
@@ -38,9 +38,8 @@
       add-item-form > button:active {
     margin: 9px !important;
     padding: 10px 15px !important;
-    font-weight: 600 !important;
     font-size: 20px;
-    color: #5ba9e6;
+    color: #000000;
     margin-bottom: 20px !important;
   }
   .image-upload {
@@ -59,7 +58,13 @@
   #hidden {
       display: none;
   }
-
+  .dropdown {
+    margin-top: 15px;
+  }
+  .dropdown-toggle {
+    border-radius: 100px !important;
+    padding: 10px 40px !important;
+  }
   .dropdown-item {
     width: initial !important;
   }
