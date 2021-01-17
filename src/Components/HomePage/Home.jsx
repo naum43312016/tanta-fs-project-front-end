@@ -31,8 +31,8 @@ const Home = () => {
             <SearchBar search={search} setSearch={setSearch} />
             <Filter category={category} setCategory={setCategory} setPrice={setPrice} />
             <div className="category-title">
-                <p className="mr-sm-5 mr-3">{category === "" ? "All Items" : category}</p>
-                {price === '' ? null : <><p className="mr-sm-5 mr-3">|</p><p>{price} <FontAwesomeIcon style={{color:"orange", fontSize:"20px"}} icon={faCoins} /></p></>}
+                <p className="mr-sm-5 mr-3">{category === "" && price === "" ? "All Items" : category}</p>
+                {price === '' ? null : <>{category !== "" ? <p className="mr-sm-5 mr-3">|</p> : null}<p>{price} <FontAwesomeIcon style={{color:"orange", fontSize:"20px"}} icon={faCoins} /></p></>}
             </div>
             <ItemCard cards={cards} />
         </div>
