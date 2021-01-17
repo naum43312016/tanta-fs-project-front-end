@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react'
 import {Container,Form, Input, Button, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
-import '../../styles/AddItem.css'
+import '../../Styles/AddItem.css'
 import dotenv from 'dotenv'
 
 const AddItem = () => {

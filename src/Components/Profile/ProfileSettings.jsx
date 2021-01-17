@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react'
 import {Container,Form, Input, Button} from 'reactstrap'
-import '../../styles/ProfileSettings.css'
+import '../../Styles/ProfileSettings.css'
 import dotenv from 'dotenv'
 
 const ProfileSettings = () => {

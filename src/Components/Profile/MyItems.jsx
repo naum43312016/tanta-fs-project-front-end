@@ -1,5 +1,5 @@
 import { Button } from "reactstrap"
-import ItemCards from "../HomePage/ItemCards"
+import ItemCard from "../HomePage/ItemCards"
 import '../../Styles/MyItems.css'
 import { useState, useEffect } from "react"
 import axios from 'axios';
@@ -13,7 +13,7 @@ const MyItems = (props) => {
             .then(res => setCards(res.data))
             .catch(err => 'There was an issue fetching all the items');
     }, [])
-
+    
     return (
         <div className="my-items-container mt-2">
             <div> </div>
@@ -25,9 +25,9 @@ const MyItems = (props) => {
                 <Button color="light" onClick={(e) => setFilter("Sold")}> Sold </Button>
             </div>
             <h3 className="mt-2">{filter}</h3>
-            {filter=='All' && <ItemCard cards={[...sellingCards,...purshasedCards]} items={filter}/>}
-            {filter=='Offered' && sellingCards && <ItemCard cards={sellingCards} items={filter}/>}
-            {filter=='Purshased' && purshasedCards && <ItemCard cards={purshasedCards} items={filter}/>}  
+            {filter=='All' && <ItemCard cards={cards} items={filter}/>}
+            {filter=='Offered' && <ItemCard cards={cards} items={filter}/>}
+            {filter=='Purshased' && <ItemCard cards={cards} items={filter}/>}  
         </div>
     )
 }
