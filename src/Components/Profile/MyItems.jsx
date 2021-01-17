@@ -16,14 +16,18 @@ const MyItems = (props) => {
 
     return (
         <div className="my-items-container mt-2">
+            <div> </div>
             <div className="items-filter">
                 <Button color="light" onClick={(e) => setFilter("All")}> All </Button>
                 <Button color="light" onClick={(e) => setFilter("Offered")}> Selling </Button>
                 <Button color="light" onClick={(e) => setFilter("Saved")}> Saved </Button>
+                <Button color="light" onClick={(e) => setFilter("Purshased")}> Purshased </Button>
                 <Button color="light" onClick={(e) => setFilter("Sold")}> Sold </Button>
             </div>
-            {filter && <h3 className="mt-2">{filter}</h3>}
-            <ItemCards items={filter} cards={cards} />
+            <h3 className="mt-2">{filter}</h3>
+            {filter=='All' && <ItemCard cards={[...sellingCards,...purshasedCards]} items={filter}/>}
+            {filter=='Offered' && sellingCards && <ItemCard cards={sellingCards} items={filter}/>}
+            {filter=='Purshased' && purshasedCards && <ItemCard cards={purshasedCards} items={filter}/>}  
         </div>
     )
 }
