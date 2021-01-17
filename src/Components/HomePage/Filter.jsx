@@ -6,10 +6,14 @@ const Filter = (props) => {
     const buttonCategory = (e) => {
         props.setCategory(e.target.innerText);
     }
-    
+
     return (
-        <Row style={{ height: "100px", marginBottom: "40px", marginTop:"45px"}} className="filter-row align-items-center justify-content-center">
-            <div className="category-input offset-sm-1 offset-0 col-md-2 mb-sm-0 mb-4 col-6">
+        <Row style={{ height: "100px", marginBottom: "40px", marginTop: "45px" }} className="filter-row align-items-center justify-content-center ml-lg-3">
+            <div className="col-md-2 mb-sm-0 mb-4 col-6 ml-sm-4 ml-0">
+                <label>Search</label>
+                <Input onChange={(e) => props.setSearch(e.target.value)} value={props.search}></Input>
+            </div>
+            <div className="category-input col-md-2 mb-sm-0 mb-4 col-6">
                 <label>Find category</label>
                 <Input onChange={(e) => props.setCategory(e.target.value)} value={props.category} type="select">
                     <option value="" defaultValue>Choose Here</option>
@@ -36,7 +40,6 @@ const Filter = (props) => {
             </div>
             <button className="filter-btn col-2" onClick={buttonCategory}>Furniture</button>
             <button className="filter-btn col-2" onClick={buttonCategory}>Kitchen</button>
-            <button className="filter-btn col-2" onClick={buttonCategory}>Electronics</button>
         </Row>
     )
 }
