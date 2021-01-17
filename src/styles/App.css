@@ -166,13 +166,6 @@ label {
   font-size: 38px;
   font-weight: bold;
   display: flex;
-  margin-top: 5%;
-}
-
-.card-img {
-  background-size: cover;
-  background-position: center;
-  width: 100%;
 }
 
 @keyframes cardlift {
@@ -181,11 +174,37 @@ label {
   }
 }
 
-.item-card:hover {
+@keyframes reverse-cardlift {
+  from {
+    margin-top: -30px;
+  }
+  to {
+    margin-top: 0px;
+  }
+}
+
+.card-img {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  animation-name: reverse-cardlift;
+  animation-duration: 0.6s;
+}
+
+.item-img {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  animation-name: reverse-cardlift;
+  animation-duration: 0.6s;
+}
+
+.card-img:hover {
   animation-name: cardlift;
-  animation-duration: 0.5s;
+  animation-duration: 0.6s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-in-out;
+  animation-delay: 0.1s;
 }
 
 @media (max-width: 1300px) {
@@ -218,7 +237,7 @@ label {
   }
 }
 
-@media (max-width: 770px) {
+@media (max-width: 800px) {
   .filter-btn {
     display: none;
   }
@@ -230,6 +249,7 @@ label {
     text-align: center;
     font-size: 30px;
     font-weight: bold;
+    margin-top: 150px;
   }
 }
 
