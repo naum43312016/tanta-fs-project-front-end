@@ -27,3 +27,10 @@
 button {
   margin: 9px !important;
 }
+
+.user-coins {
+  display: flex;
+  
+  max-width: 550px;
+  background-color: #5BA9E6;
+}

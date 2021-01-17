@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoins } from '@fortawesome/free-solid-svg-icons'
 
 const ItemCard = (props) => {
-    console.log(props.cards)
     return (
         <div style={{ width: "80%", marginLeft: "10%" }} className="card-container mt-5 mb-5">
             {props.cards.map((item) => {

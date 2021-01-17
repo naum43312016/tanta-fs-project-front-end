@@ -204,7 +204,7 @@ label {
   }
 }
 
-@media (max-width: 499px) {
+@media (max-width: 550px) {
   .top-navbar {
     position: fixed;
     bottom: 0;

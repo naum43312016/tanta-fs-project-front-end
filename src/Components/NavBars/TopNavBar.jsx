@@ -3,7 +3,7 @@ import { Row, Button, Modal } from 'reactstrap';
 import { Authentication } from '../../Contexts/Authentication';
 import { Link, Route } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCog, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faCog, faPlus, faUser } from '@fortawesome/free-solid-svg-icons'
 import SignUp from '../LoginPage/SignUp';
 import Login from '../LoginPage/Login';
 import { confirmLogout } from '../../Tools/WebsiteResponses';
@@ -20,6 +20,9 @@ const TopNavBar = (props) => {
                 </Link>
                 {authenticated ?
                     <>
+                        <Link to={"/add-item"}>
+                            <FontAwesomeIcon style={{ color: "white", height: "25px" }} icon={faPlus} size="2x" ></FontAwesomeIcon>
+                        </Link>
                         <Link to={"/my-items"}>
                             <FontAwesomeIcon style={{ color: "white", height: "25px" }} icon={faUser} size="2x" ></FontAwesomeIcon>
                         </Link>
