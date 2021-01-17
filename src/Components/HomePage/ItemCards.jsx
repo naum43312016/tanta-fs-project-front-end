@@ -12,7 +12,7 @@ const ItemCard = (props) => {
         <div>
         <div style={{ width: "80%", marginLeft: "10%" }} className="card-container mt-5 mb-5">
             {props.cards.map((item) => {
-                return (<div style={{backgroundColor:"#F7F7F7"}} className="item-card">
+                return (<div style={{backgroundColor:"#F7F7F7"}}>
                     <Link to={`/item/${item._id}`}  >
                         <div style={{width:"100%", height:"230px", backgroundImage: `url(${item.imageUrl})`}} className="card-img" top width="100%" alt={item.name} />
                     </Link>
