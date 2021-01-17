@@ -4,16 +4,18 @@ import ItemCard from './ItemCards';
 import SearchBar from './SearchBar';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoins } from '@fortawesome/free-solid-svg-icons'
 
 const Home = () => {
     const [search, setSearch] = useState('');
     const [category, setCategory] = useState('')
+    const [price, setPrice] = useState('');
     const [cards, setCards] = useState([]);
-    const [currentCard, setCurrentCard] = useState(null);
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
     useEffect(() => { //getting all items on first app render
-        axios.get('http://localhost:3001/home/get-all-items')
+        axios.get(BASE_URL + '/home/get-all-items')
             .then(res => setCards(res.data))
             .catch(err => 'There was an issue fetching all the items');
     }, [])
@@ -27,8 +29,12 @@ const Home = () => {
     return (
         <div>
             <SearchBar search={search} setSearch={setSearch} />
-            <Filter category={category} setCategory={setCategory} />
-            <ItemCard cards={cards} currentCard={currentCard} />
+            <Filter category={category} setCategory={setCategory} setPrice={setPrice} />
+            <div className="category-title mt-sm-0 mt-5">
+                <p className="mr-sm-5 mr-3">{category === "" && price === "" ? "All Items" : category}</p>
+                {price === '' ? null : <>{category !== "" ? <p className="mr-sm-5 mr-3">|</p> : null}<p>{price} <FontAwesomeIcon style={{color:"orange", fontSize:"20px"}} icon={faCoins} /></p></>}
+            </div>
+            <ItemCard cards={cards} />
         </div>
     )
 }

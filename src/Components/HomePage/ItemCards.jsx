@@ -7,13 +7,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoins } from '@fortawesome/free-solid-svg-icons'
 
 const ItemCard = (props) => {
-    console.log(props.cards)
+
     return (
+        <div>
         <div style={{ width: "80%", marginLeft: "10%" }} className="card-container mt-5 mb-5">
             {props.cards.map((item) => {
-                return (<Card>
+                return (<div style={{backgroundColor:"#F7F7F7"}} className="item-card">
                     <Link to={`/item/${item._id}`}  >
-                        <CardImg style={{maxHeight:"200px"}} top width="100%" src={item.imageUrl} alt="Card image cap" />
+                        <div style={{width:"100%", height:"230px", backgroundImage: `url(${item.imageUrl})`}} className="card-img" top width="100%" alt={item.name} />
                     </Link>
                     <CardBody className="overflow-dots">
                         <Row  >
@@ -23,10 +24,11 @@ const ItemCard = (props) => {
                         <CardSubtitle tag="h6" className="mb-2 text-muted">{item.condition}</CardSubtitle>
                         <CardText>{item.description}</CardText>
                     </CardBody>
-                </Card>
+                </div>
                 )
             })}
         </div>
+    </div>
     )
 }
 
