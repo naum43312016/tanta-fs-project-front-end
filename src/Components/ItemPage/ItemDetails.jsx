@@ -26,17 +26,3 @@ const ItemDetails = (props) => {
 }
 
 export default ItemDetails;
-
-// <div style={{backgroundColor:"#F7F7F7", padding:"20px", height:"800px", width:"60%"}}>
-// <Row className='justify-content-center'>
-//     <img src={props.item.imageUrl} style={{maxWidth:"80%", maxHeight:"300px", float:"left"}} className="ml-5 rounded mt-4"></img>
-
-// </Row>
-// <ul style={{listStyle:"none"}} className="ml-5">
-//         <li className="mb-5"><span className="font-weight-bold">Name:</span> {props.item.name}</li>
-//         <li className="mb-5"><span className="font-weight-bold">Price:</span> {props.item.price} <FontAwesomeIcon style={{color:"orange", fontSize:"20px"}} icon={faCoins} className="ml-2" /></li>
-//         <li className="mb-5"><span className="font-weight-bold">Name:</span> {props.item.name}</li>
-//         <li className="mb-5"><span className="font-weight-bold">Name:</span> {props.item.name}</li>
-//         <li className="mb-4"><span className="font-weight-bold">Name:</span> {props.item.name}</li>
-//     </ul>
-// </div>
