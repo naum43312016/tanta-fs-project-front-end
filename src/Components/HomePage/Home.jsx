@@ -30,7 +30,7 @@ const Home = () => {
         <div>
             <SearchBar search={search} setSearch={setSearch} />
             <Filter category={category} setCategory={setCategory} setPrice={setPrice} />
-            <div className="category-title">
+            <div className="category-title mt-sm-0 mt-5">
                 <p className="mr-sm-5 mr-3">{category === "" && price === "" ? "All Items" : category}</p>
                 {price === '' ? null : <>{category !== "" ? <p className="mr-sm-5 mr-3">|</p> : null}<p>{price} <FontAwesomeIcon style={{color:"orange", fontSize:"20px"}} icon={faCoins} /></p></>}
             </div>

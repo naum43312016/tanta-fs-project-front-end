@@ -109,7 +109,7 @@ input {
   border: none;
   word-wrap: break-word;
   background-color: transparent;
-  border-bottom: lightgrey 1px solid;
+  border-bottom: lightgrey 2px solid;
   transition: background-color 0.3s;
   width: 160px;
 }
@@ -118,7 +118,6 @@ input {
 .filter-btn:active {
   outline: none;
   border: none;
-  border-bottom: #a6a8ac 1px solid;
 }
 
 @keyframes lift {
@@ -131,7 +130,7 @@ input {
   animation-name: lift;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
-  border-bottom: #a6a8ac 1px solid;
+  border-bottom: #a6a8ac 3px solid;
   background-color: #eef0f2;
 }
 
@@ -167,12 +166,26 @@ label {
   font-size: 38px;
   font-weight: bold;
   display: flex;
+  margin-top: 5%;
 }
 
 .card-img {
   background-size: cover;
   background-position: center;
   width: 100%;
+}
+
+@keyframes cardlift {
+  to {
+    margin-top: -30px;
+  }
+}
+
+.item-card:hover {
+  animation-name: cardlift;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
 }
 
 @media (max-width: 1300px) {

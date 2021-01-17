@@ -10,10 +10,9 @@ const ItemCard = (props) => {
 
     return (
         <div>
-        <h1 className="ml-5">{props.category}</h1>
         <div style={{ width: "80%", marginLeft: "10%" }} className="card-container mt-5 mb-5">
             {props.cards.map((item) => {
-                return (<Card style={{backgroundColor:"#F7F7F7"}}>
+                return (<div style={{backgroundColor:"#F7F7F7"}} className="item-card">
                     <Link to={`/item/${item._id}`}  >
                         <div style={{width:"100%", height:"230px", backgroundImage: `url(${item.imageUrl})`}} className="card-img" top width="100%" alt={item.name} />
                     </Link>
@@ -25,7 +24,7 @@ const ItemCard = (props) => {
                         <CardSubtitle tag="h6" className="mb-2 text-muted">{item.condition}</CardSubtitle>
                         <CardText>{item.description}</CardText>
                     </CardBody>
-                </Card>
+                </div>
                 )
             })}
         </div>
