@@ -6,16 +6,12 @@ const Filter = (props) => {
     const buttonCategory = (e) => {
         props.setCategory(e.target.innerText);
     }
-
-    const inputCategory = (e) => {
-        props.setCategory(e.target.value);
-    }
     
     return (
         <Row style={{ height: "100px", marginBottom: "40px", marginTop:"45px"}} className="filter-row align-items-center justify-content-center">
             <div className="category-input offset-sm-1 offset-0 col-md-2 mb-sm-0 mb-4 col-6">
                 <label>Find category</label>
-                <Input onChange={inputCategory} value={props.category} type="select">
+                <Input onChange={(e) => props.setCategory(e.target.value)} value={props.category} type="select">
                     <option value="" defaultValue>Choose Here</option>
                     <option value="Bathroom">Bathroom</option>
                     <option value="Clothing">Clothing</option>
@@ -30,7 +26,7 @@ const Filter = (props) => {
             </div>
             <div className="price-input col-md-2 mb-sm-0 mb-4 col-6 col-3">
                 <label>Find Price</label>
-                <Input onChange={inputCategory} value={props.category} type="select">
+                <Input onChange={(e) => props.setPrice(e.target.value)} value={props.price} type="select">
                     <option value="" defaultValue>Choose Here</option>
                     <option value="0-5">0-5 coins</option>
                     <option value="6-10">6-10 coins</option>

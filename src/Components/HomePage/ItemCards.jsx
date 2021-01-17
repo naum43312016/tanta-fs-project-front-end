@@ -9,11 +9,13 @@ import { faCoins } from '@fortawesome/free-solid-svg-icons'
 const ItemCard = (props) => {
 
     return (
+        <div>
+        <h1 className="ml-5">{props.category}</h1>
         <div style={{ width: "80%", marginLeft: "10%" }} className="card-container mt-5 mb-5">
             {props.cards.map((item) => {
-                return (<Card>
+                return (<Card style={{backgroundColor:"#F7F7F7"}}>
                     <Link to={`/item/${item._id}`}  >
-                        <CardImg className="img-fluid" top width="100%" src={item.imageUrl} alt="Card image cap" />
+                        <div style={{width:"100%", height:"230px", backgroundImage: `url(${item.imageUrl})`}} className="card-img" top width="100%" alt={item.name} />
                     </Link>
                     <CardBody className="overflow-dots">
                         <Row  >
@@ -27,6 +29,7 @@ const ItemCard = (props) => {
                 )
             })}
         </div>
+    </div>
     )
 }
 

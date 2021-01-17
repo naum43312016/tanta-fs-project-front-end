@@ -4,10 +4,13 @@ import ItemCard from './ItemCards';
 import SearchBar from './SearchBar';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoins } from '@fortawesome/free-solid-svg-icons'
 
 const Home = () => {
     const [search, setSearch] = useState('');
     const [category, setCategory] = useState('')
+    const [price, setPrice] = useState('');
     const [cards, setCards] = useState([]);
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
@@ -26,9 +29,10 @@ const Home = () => {
     return (
         <div>
             <SearchBar search={search} setSearch={setSearch} />
-            <Filter category={category} setCategory={setCategory} />
+            <Filter category={category} setCategory={setCategory} setPrice={setPrice} />
             <div className="category-title">
-                <p>{category === "" ? "All Items" : category}</p>
+                <p className="mr-sm-5 mr-3">{category === "" ? "All Items" : category}</p>
+                {price === '' ? null : <><p className="mr-sm-5 mr-3">|</p><p>{price} <FontAwesomeIcon style={{color:"orange", fontSize:"20px"}} icon={faCoins} /></p></>}
             </div>
             <ItemCard cards={cards} />
         </div>
