@@ -1,24 +1,32 @@
 import React, { useEffect, useState } from 'react';
+import { Row } from 'reactstrap';
 import Filter from './Filter';
 import ItemCard from './ItemCards';
-import SearchBar from './SearchBar';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoins } from '@fortawesome/free-solid-svg-icons'
 
 const Home = () => {
     const [search, setSearch] = useState('');
     const [category, setCategory] = useState('')
+    const [price, setPrice] = useState('');
     const [cards, setCards] = useState([]);
-    const [currentCard, setCurrentCard] = useState(null);
     const BASE_URL = process.env.REACT_APP_BASE_URL;
 
     useEffect(() => { //getting all items on first app render
-        axios.get('http://localhost:3001/home/get-all-items')
+        axios.get(BASE_URL + '/home/get-all-items')
             .then(res => setCards(res.data))
             .catch(err => 'There was an issue fetching all the items');
     }, [])
 
-    useEffect(() => { //fetching categories
+    useEffect(() => { //fetching the right category
+        axios.get(BASE_URL + `/category?name=${category}`)
+            .then(res => console.log(res))
+            .catch(err => console.log('There was an issue fetching the items of the requested category'));
+    }, [category])
+
+    useEffect(() => { //fetching the right category
         axios.get(BASE_URL + `/category?name=${category}`)
             .then(res => console.log(res))
             .catch(err => console.log('There was an issue fetching the items of the requested category'));
@@ -26,9 +34,13 @@ const Home = () => {
 
     return (
         <div>
-            <SearchBar search={search} setSearch={setSearch} />
-            <Filter category={category} setCategory={setCategory} />
-            <ItemCard cards={cards} currentCard={currentCard} />
+            <Row style={{ backgroundColor: "#7AE582", height: "30px" }} className="search-bar justify-content-center align-items-center" />
+            <Filter category={category} setCategory={setCategory} setPrice={setPrice} setSearch={setSearch} />
+            <div className="category-title">
+                <p className="mr-sm-5 mr-3">{category === "" && price === "" ? "All Items" : category}</p>
+                {price === '' ? null : <>{category !== "" ? <p className="mr-sm-5 mr-3">|</p> : null}<p>{price} <FontAwesomeIcon style={{ color: "orange", fontSize: "20px" }} icon={faCoins} /></p></>}
+            </div>
+            <ItemCard cards={cards} />
         </div>
     )
 }

@@ -8,24 +8,26 @@ import { faCoins } from '@fortawesome/free-solid-svg-icons'
 
 const ItemCard = (props) => {
     return (
+        <div>
         <div style={{ width: "80%", marginLeft: "10%" }} className="card-container mt-5 mb-5">
-            {props.cards.map((item, index) => {
-                return (<Card key={index}>
-                    <Link to={`/item/${item._id}`}  >
-                        <CardImg style={{maxHeight:"200px"}} top width="100%" src={item.imageUrl} alt="Card image cap" />
+            {props.cards.map((item) => {
+                return (<div style={{backgroundColor:"#F7F7F7"}}>
+                    <Link to={{pathname: `/item/${item._id}`, state: item._id}}  >
+                        <div style={{width:"100%", height:"230px", backgroundImage: `url(${item.imageUrl})`}} className="card-img" top width="100%" alt={item.name} />
                     </Link>
                     <CardBody className="overflow-dots">
-                        <Row  >
+                        <Row>
                             <CardTitle tag="h5" className="col-10">{item.name}</CardTitle>
                             <p>{item.price} <FontAwesomeIcon style={{color:"orange", fontSize:"20px"}} icon={faCoins} /></p>
                         </Row>
                         <CardSubtitle tag="h6" className="mb-2 text-muted">{item.condition}</CardSubtitle>
                         <CardText>{item.description}</CardText>
                     </CardBody>
-                </Card>
+                </div>
                 )
             })}
         </div>
+    </div>
     )
 }
 

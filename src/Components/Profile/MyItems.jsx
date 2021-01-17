@@ -1,46 +1,19 @@
 import { Button } from "reactstrap"
-import ItemCard from "../HomePage/ItemCards"
-import '../../styles/MyItems.css'
-import { useEffect, useState } from "react"
-import axios from "axios"
+import ItemCards from "../HomePage/ItemCards"
+import '../../Styles/MyItems.css'
+import { useState, useEffect } from "react"
+import axios from 'axios';
 
 const MyItems = (props) => {
     const [filter, setFilter] = useState("All")
-    const [sellingCards, setSellingCards] = useState([]) //Getting user's cards
-    const [purshasedCards, setPurshasedCards] = useState([]) //Getting user's cards
+    const [cards, setCards] = useState([]);
 
-    const [currCategory, setCurrCategory] = useState('All')
-
-
-    const BASE_URL = process.env.REACT_APP_BASE_URL;
-    const userID = localStorage.getItem('sessionID')
-    useEffect(()=>{
-        axios.get(`${BASE_URL}/user/${userID}`)
-        .then(res => {
-            const sellingItems = []
-            res.data.items.map(item => {
-                axios.get(`${BASE_URL}/item/${item}`)
-                .then(res => sellingItems.push(res.data))
-                .catch(err => console.error(err))
-            })
-            console.log('updated')
-            setSellingCards(sellingItems)
-        })
-
-        axios.get(`${BASE_URL}/user/${userID}`)
-        .then(res => {
-            const purshasedItems = []
-            res.data.purchasedItems.map(item => {
-                axios.get(`${BASE_URL}/item/${item}`)
-                .then(res => purshasedItems.push(res.data))
-                .catch(err => console.error(err))
-            })
-            console.log('updated')
-            setPurshasedCards(purshasedItems)
-        })
-        
+    useEffect(() => { //getting all items on first app render, we will change the link later
+        axios.get('http://localhost:3001/home/get-all-items')
+            .then(res => setCards(res.data))
+            .catch(err => 'There was an issue fetching all the items');
     }, [])
-    
+
     return (
         <div className="my-items-container mt-2">
             <div> </div>
