@@ -13,7 +13,7 @@ const ItemCard = (props) => {
             {props.cards.map((item) => {
                 return (<div style={{backgroundColor:"#F7F7F7"}}>
                     <Link to={{pathname: `/item/${item._id}`, state: item._id}}  >
-                        <div style={{width:"100%", height:"230px", backgroundImage: `url(${item.imageUrl})`}} className="card-img" top width="100%" alt={item.name} />
+                        <div style={{width:"100%", height:"200px", backgroundImage: `url(${item.imageUrl})`}} className="card-img" top width="100%" alt={item.name} />
                     </Link>
                     <CardBody className="overflow-dots">
                         <Row>
@@ -21,7 +21,7 @@ const ItemCard = (props) => {
                             <p>{item.price} <FontAwesomeIcon style={{color:"orange", fontSize:"20px"}} icon={faCoins} /></p>
                         </Row>
                         <CardSubtitle tag="h6" className="mb-2 text-muted">{item.condition}</CardSubtitle>
-                        <CardText>{item.description}</CardText>
+                        <CardText style={{wordBreak:"break-word"}}>{item.description}</CardText>
                     </CardBody>
                 </div>
                 )

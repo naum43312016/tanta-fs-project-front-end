@@ -26,6 +26,7 @@ const Filter = (props) => {
                     <option value="Kitchen">Kitchen</option>
                     <option value="PCs and Laptops">PCs and Laptops</option>
                     <option value="Sports">Sports</option>
+                    <option value="Toys">Toys</option>
                 </Input>
             </div>
             <div className="price-input col-md-2 mb-sm-0 mb-4 col-6 col-3">

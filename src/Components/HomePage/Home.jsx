@@ -22,16 +22,10 @@ const Home = () => {
     }, [])
 
     useEffect(() => { //fetching the right category
-        axios.get(BASE_URL + `/category?name=${category}`)
-            .then(res => console.log(res))
+        axios.get(BASE_URL + `/search/item?category=${category}&price=${price}&name=${search}`)
+            .then(res => setCards(res.data.items))
             .catch(err => console.log('There was an issue fetching the items of the requested category'));
-    }, [category])
-
-    useEffect(() => { //fetching the right category
-        axios.get(BASE_URL + `/category?name=${category}`)
-            .then(res => console.log(res))
-            .catch(err => console.log('There was an issue fetching the items of the requested category'));
-    }, [category])
+    }, [category, price, search])
 
     return (
         <div>
