@@ -51,7 +51,7 @@ const formIssue = (msg) => {
   })
 }
 
-const petUploaded = (msg) => {
+const itemUploaded = (msg) => {
   return Swal.fire({
     title: msg,
     text: "redirecting...",
@@ -97,4 +97,4 @@ const confirmLogout = (setAuthenticated, setOpenSignup, ) => {
   })
 }
 
-export { invalidFields, wrongCredentials, signUpSucces, signInSuccess, noResults, petUploaded, docDeleted, formIssue, updatedProfile, confirmLogout };
+export { invalidFields, wrongCredentials, signUpSucces, signInSuccess, noResults, itemUploaded, docDeleted, formIssue, updatedProfile, confirmLogout };

@@ -264,6 +264,7 @@ label {
   }
 }
 
+<<<<<<< HEAD:src/styles/App.css
 @media (max-width: 640px) {
   .card-container {
     display: grid;
@@ -272,6 +273,9 @@ label {
 }
 
 @media (max-width: 499px) {
+=======
+@media (max-width: 550px) {
+>>>>>>> main:src/Styles/App.css
   .top-navbar {
     position: fixed;
     bottom: 0;

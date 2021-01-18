@@ -7,12 +7,13 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoins } from '@fortawesome/free-solid-svg-icons'
 
+export const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 const Home = () => {
     const [search, setSearch] = useState('');
     const [category, setCategory] = useState('')
     const [price, setPrice] = useState('');
     const [cards, setCards] = useState([]);
-    const BASE_URL = process.env.REACT_APP_BASE_URL;
 
     useEffect(() => { //getting all items on first app render
         axios.get(BASE_URL + '/home/get-all-items')

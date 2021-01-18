@@ -1,0 +1,70 @@
+.add-item-form {
+    margin-top: 45px !important;
+    padding: 10px;
+    margin: 0 auto;
+    max-width: 550px;
+    border: 1px solid #4a81ff;
+    background-color: #4a81ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 9px;
+  }
+  .add-item-form h3 {
+    margin: 9px;
+    color: white;
+  }
+  .add-item-input {
+    margin: 10px;
+    width: 95% !important;
+    border: 1px solid #4a81ff !important;
+  }
+  
+  .add-item-input:focus {
+    box-shadow: none !important;
+  }
+  
+  .add-item-form > button {
+    margin: 9px !important;
+    padding: 10px 15px !important;
+    font-size: 20px;
+    color: #000000;
+    border-radius: 100px !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .add-item-form > button:hover,
+    add-item-form > button:focus,
+      add-item-form > button:active {
+    margin: 9px !important;
+    padding: 10px 15px !important;
+    font-size: 20px;
+    color: #000000;
+    margin-bottom: 20px !important;
+  }
+  .image-upload {
+    cursor: pointer;
+    margin-top: 20px;
+    width: 90px;
+    height: 90px;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    border-radius:30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #hidden {
+      display: none;
+  }
+  .dropdown {
+    margin-top: 15px;
+  }
+  .dropdown-toggle {
+    border-radius: 100px !important;
+    padding: 10px 40px !important;
+  }
+  .dropdown-item {
+    width: initial !important;
+  }
