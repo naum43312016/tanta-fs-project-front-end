@@ -81,7 +81,6 @@ export {  Signup,
           SignIn, 
           getCookies, 
           validateEmail, 
-          validatePassword, 
           checkForAdmin, 
           submitProfileChanges,
         }
