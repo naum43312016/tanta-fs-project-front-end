@@ -7,11 +7,6 @@ const validateEmail = (email) => {
   return re.test(String(email).toLowerCase());
 }
 
-const validatePassword = (password) => {
-  const re = /^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$/;
-  return re.test(password);
-}
-
 const checkFields = (userDetails) => {
   const { firstName, lastName, email, password, phone } = userDetails;
   if (firstName.length <= 2 || lastName.length <= 2) {
@@ -20,8 +15,8 @@ const checkFields = (userDetails) => {
   if (!validateEmail(email)) {
     return invalidFields("Please use a valid email address");
   }
-  if (!validatePassword(password)) {
-    return invalidFields("Your password must have a minimum of 8 characters including at least one number")
+  if (password.length >= 6 && password.length <= 32) {
+    return invalidFields("Please keep your password length between 6 and 32 characters");
   }
   if (phone.length < 10) {
     return invalidFields("Please enter a valid phone number")
