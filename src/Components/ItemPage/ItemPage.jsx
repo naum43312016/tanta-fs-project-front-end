@@ -14,8 +14,8 @@ const ItemPage = () => {
     }, [])
 
     return (
-        <Container className="mt-5">
-            <p className="category-title mb-5">{item.name}</p>
+        <Container className="item">
+            <p className="item-title mb-5">{item.name}</p>
             <ItemDetails item={item} />
         </Container>
     )
