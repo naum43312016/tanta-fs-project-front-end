@@ -4,6 +4,7 @@
   "private": true,
   "author": "Yoel Zerbib, Naum Asafov, Letzy Benavente, Joey Spijer",
   "dependencies": {
+    "@fortawesome/fontawesome-free-regular": "^5.0.13",
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@fortawesome/react-fontawesome": "^0.1.14",

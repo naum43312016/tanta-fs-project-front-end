@@ -8,9 +8,9 @@ import { BASE_URL } from '../HomePage/Home'
 const MyItems = (props) => {
     const [filter, setFilter] = useState("All")
     const [cards, setCards] = useState([]);
-    const [sellingCards, setSellingCards] = useState([]);
-    const [purshasedCards, setPurshasedCards] = useState([]);
-    const [favoriteCards, setFavoriteCards] = useState([]);
+    const [sellingItems, setSellingItems] = useState([]);
+    const [purchasedItems, setPurchasedItems] = useState([]);
+    const [favoriteItems, setFavoriteItems] = useState([]);
 
     useEffect(() => { //getting all items on first app render, we will change the link later
         axios.get('http://localhost:3001/home/get-all-items')
@@ -18,34 +18,15 @@ const MyItems = (props) => {
             .catch(err => 'There was an issue fetching all the items');
     }, [])
 
-    useEffect(() => { 
-        const sellingItems = []
-        const purchasedItems = []
-        const favoriteItems = []
+    useEffect(() => {
         axios.get(`${BASE_URL}/user/${localStorage.getItem('sessionID')}`) // Fetch user infos for fetching items
         .then(res => {
-            res.data.items.forEach(item => { // Getting offered items
-                axios.get(`${BASE_URL}/item/${item}`)
-                .then(res => sellingItems.push(res.data))
-                .catch(err => console.error(err))
-                setSellingCards(sellingItems)
-            })
-            res.data.purchasedItems.forEach(item => { // Getting purshased items
-                axios.get(`${BASE_URL}/item/${item}`)
-                .then(res => purchasedItems.push(res.data))
-                .catch(err => console.error(err))
-                setPurshasedCards(purchasedItems)
-            })
-            res.data.favoriteItems.forEach(item => { // Getting favorites items
-                axios.get(`${BASE_URL}/item/${item}`)
-                .then(res => favoriteItems.push(res.data))
-                .catch(err => console.error(err))
-                setFavoriteCards(favoriteItems)
-            })
+            setSellingItems(res.data.items);
+            setPurchasedItems(res.data.purchasedItems);
+            setFavoriteItems(res.data.favoriteItems);
         })
-        .catch(err => console.error(err))
     }, [])
-    
+
     return (
         <div className="my-items-container mt-2">
             <div> </div>
@@ -57,10 +38,10 @@ const MyItems = (props) => {
                 <Button color="light" onClick={(e) => setFilter("Sold")}> Sold </Button>
             </div>
             <h3 className="mt-2">{filter}</h3>
-            {filter=='All' && <ItemCard cards={cards} items={filter}/>}
-            {filter=='Offered' && sellingCards && <ItemCard cards={sellingCards} items={filter}/>}
-            {filter=='Saved' && favoriteCards && <ItemCard cards={favoriteCards} items={filter}/>}
-            {filter=='Purshased' && purshasedCards && <ItemCard cards={purshasedCards} items={filter}/>}  
+            {filter == 'All' && <ItemCard cards={cards} items={filter} />}
+            {filter == 'Offered' && sellingItems && <ItemCard cards={sellingItems} items={filter} />}
+            {filter == 'Saved' && favoriteItems && <ItemCard cards={favoriteItems} items={filter} />}
+            {filter == 'Purshased' && purchasedItems && <ItemCard cards={purchasedItems} items={filter} />}
         </div>
     )
 }
