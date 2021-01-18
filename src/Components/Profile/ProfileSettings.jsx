@@ -1,3 +1,5 @@
+import { faCoins } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import { useEffect, useState } from 'react'
 import {Container,Form, Input, Button} from 'reactstrap'
@@ -22,6 +24,10 @@ const ProfileSettings = () => {
 
     return (
         <Container>
+            <div className="coins-div">
+                <div><FontAwesomeIcon icon={faCoins} size="3x" color="#FFD700"/> </div>
+                <div className="coin-number"> {profileInfos && profileInfos.coins} </div>
+            </div>
             <Form action="" className="settings-form" onSubmit={e=> e.preventDefault()}>
                 <h3>Profile settings</h3>
                 <div className="user-coins"> </div>

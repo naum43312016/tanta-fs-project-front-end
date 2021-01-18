@@ -14,6 +14,7 @@ const AddItem = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [categories, setCategories] = useState({categories: null, selected: null})
     const [pic, setPic] = useState({selectedFile: null})
+    const [previewPic, setPreviewPic] = useState("")
     const [redirect, setRedirect] = useState(false) // in case of success
 
     const toggle = () => setDropdownOpen(prevState => !prevState);
@@ -69,10 +70,17 @@ const AddItem = () => {
     return (
         <Container>
         <Form action="" className="add-item-form" onSubmit={e=> postItem(e)} encType="multipart/form-data">
-            <input type="file" ref={ref} id="hidden" onChange={(e) => {                  
+            <input type="file" ref={ref} id="hidden" onChange={(e) => {     
+                const file = e.target.files[0]
+                const reader = new FileReader()
+                reader.onload = (e) => {
+                    setPreviewPic(e.target.result)
+                }
+                reader.readAsDataURL(file)
                 setPic({selectedFile :e.target.files[0]})
                 } }/>
             <div className="image-upload" onClick={() => ref.current.click()}><FontAwesomeIcon style={imageUploadStyle} icon={faCamera}/></div>
+            {previewPic && <div className="image-preview"><img src={previewPic} alt="loaded pic" /></div>}
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>
                 <DropdownToggle caret color="light">
                     {categories.categories && categories.selected || 'Category'} {/* Setting the select name based on selected category  */}
