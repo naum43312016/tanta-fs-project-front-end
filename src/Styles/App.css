@@ -203,14 +203,6 @@ label {
   animation-duration: 0.6s;
 }
 
-.item-img {
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  animation-name: reverse-cardlift;
-  animation-duration: 0.6s;
-}
-
 .card-img:hover {
   animation-name: cardlift;
   animation-duration: 0.6s;
