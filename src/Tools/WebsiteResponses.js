@@ -93,6 +93,7 @@ const confirmLogout = (setAuthenticated, setOpenSignup, ) => {
       setAuthenticated(false);
       setOpenSignup(false);
       localStorage.clear();
+      window.location.reload();
     }
   })
 }

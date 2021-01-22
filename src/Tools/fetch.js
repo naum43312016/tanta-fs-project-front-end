@@ -9,13 +9,14 @@ const validateEmail = (email) => {
 
 const checkFields = (userDetails) => {
   const { firstName, lastName, email, password, phone } = userDetails;
+  console.log(password.length >= 6 && password.length <= 32)
   if (firstName.length <= 2 || lastName.length <= 2) {
     return invalidFields('First and last name should contain at least 2 characters');
   }
   if (!validateEmail(email)) {
     return invalidFields("Please use a valid email address");
   }
-  if (password.length >= 6 && password.length <= 32) {
+  if (password.length <= 6 && password.length >= 32) {
     return invalidFields("Please keep your password length between 6 and 32 characters");
   }
   if (phone.length < 10) {

@@ -20,16 +20,18 @@ const ItemCard = (props) => {
                 .then(res => setFavoriteItems(res.data))
                 .catch(err => "Couldn't get user favorites")
         }
-    }, [])
+    }, [{}])
 
     const addItemToFavorites = (item) => {
         axios.post(BASE_URL + `/item/${item._id}/favorite`, '', userToken)
-            .then(res => console.log(res))
-            .catch(err => console.log("Couldn't save the item"));
+            .then(res => console.log("Saved the item as favorite"))
+            .catch(err => console.log("Couldn't save the item as favorite"));
     }
 
-    const removeItemFromFavorites = () => {
-
+    const removeItemFromFavorites = (item) => {
+        axios.delete(`${BASE_URL}/item/${item._id}/favorite`, userToken)
+            .then(res => console.log("Unsaved the item"))
+            .catch(err => console.log("Couldn't unsave the item"));
     }
 
     return (
@@ -47,12 +49,16 @@ const ItemCard = (props) => {
                             </Row>
                             <CardSubtitle tag="h6" className="mb-2 text-muted">{item.condition}</CardSubtitle>
                             <CardText style={{ wordBreak: "break-word" }}>{item.description}</CardText>
-                            <footer>
-                                <div className="align-items-center justify-content-end d-flex">
-                                    {!favoriteItems.includes(`${item._id}`) ? <p style={{ fontSize: "18px", margin: "0" }} className="mr-2">Save</p> : <p style={{ fontSize: "18px", margin: "0" }} className="mr-2">Unsave</p>}
-                                    {!favoriteItems.includes(`${item._id}`) ? <FontAwesomeIcon color="red" style={{ cursor: "pointer", fontSize: "25px" }} onClick={() => addItemToFavorites(item)} cldivassName="mr-2 awesome-icon" icon={regularHeart}></FontAwesomeIcon> : <FontAwesomeIcon style={{ cursor: "pointer", fontSize: "25px" }} color="red" onClick={() => removeItemFromFavorites(item)} className=" awesome-icon" icon={solidHeart}></FontAwesomeIcon>}
-                                </div>
-                            </footer>
+                            {loggedIn ?
+                                <footer>
+                                    <div className="align-items-center justify-content-end d-flex">
+                                        {!favoriteItems.includes(`${item._id}`) ? <p style={{ fontSize: "18px", margin: "0" }} className="mr-2">Save</p> : <p style={{ fontSize: "18px", margin: "0" }} className="mr-2">Unsave</p>}
+                                        {!favoriteItems.includes(`${item._id}`) ? <FontAwesomeIcon color="red" style={{ cursor: "pointer", fontSize: "25px" }} onClick={() => addItemToFavorites(item)} cldivassName="mr-2 awesome-icon" icon={regularHeart}></FontAwesomeIcon> : <FontAwesomeIcon style={{ cursor: "pointer", fontSize: "25px" }} color="red" onClick={() => removeItemFromFavorites(item)} className=" awesome-icon" icon={solidHeart}></FontAwesomeIcon>}
+                                    </div>
+                                </footer>
+                                :
+                                null
+                            }
                         </CardBody>
                     </div>
                     )
