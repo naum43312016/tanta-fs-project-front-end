@@ -10,10 +10,20 @@ import { faHeart as regularHeart } from "@fortawesome/fontawesome-free-regular";
 
 const ItemCard = (props) => {
     const [favoriteItems, setFavoriteItems] = useState([]);
+    const [loggedIn, setLoggedIn] = useState(localStorage.getItem("sessionID"));
     const BASE_URL = process.env.REACT_APP_BASE_URL;
+    const userToken = { headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') } }
+
+    useEffect(() => {
+        if (loggedIn != null) {
+            axios.get(`${BASE_URL}/user/favorites`, userToken)
+                .then(res => setFavoriteItems(res.data))
+                .catch(err => "Couldn't get user favorites")
+        }
+    }, [])
 
     const addItemToFavorites = (item) => {
-        axios.post(BASE_URL + `/item/${item._id}/favorite`, { headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') } })
+        axios.post(BASE_URL + `/item/${item._id}/favorite`, '', userToken)
             .then(res => console.log(res))
             .catch(err => console.log("Couldn't save the item"));
     }
