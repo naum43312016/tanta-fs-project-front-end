@@ -47,7 +47,8 @@ const AddItem = () => {
             data.append('image', pic.selectedFile, `${Date.now()}-${pic.selectedFile.name}`)
         }
         axios.post(`${BASE_URL}/item`, data, {headers: {'Authorization' : 'Bearer ' + localStorage.getItem('token')}})
-            .then(itemUploaded().then(setRedirect(true))) // if success so set success & redirect to homepage
+            .then(itemUploaded())
+            .then(setRedirect(true)) // if success so set success & redirect to homepage
             .catch(err => {
                 // fetch error message from server
                 const error = err.response.data 
@@ -92,7 +93,13 @@ const AddItem = () => {
                 </DropdownMenu>
         </Dropdown>
             <Input className="add-item-input" name="name" placeholder="Name of product" onChange={e => handleChange(e)}/>
-            <Input className="add-item-input" name="condition" placeholder="Contition" onChange={e => handleChange(e)}/>
+            <Input className="add-item-input" type="select" name="condition" onChange={e => handleChange(e)}>
+                <option value="condition" disabled selected>Condition</option>
+                <option value="new">New</option>
+                <option value="likeNew">Like new</option>
+                <option value="good">Good</option>
+                <option value="used">Used</option>               
+            </Input>
             <Input className="add-item-input" type="number" name="price" placeholder="Price" onChange={e => handleChange(e)}/>
             <Input className="add-item-input" name="description" placeholder="Description" onChange={e => handleChange(e)}/>
             <Button color="light" type="submit"> Add an item </Button>

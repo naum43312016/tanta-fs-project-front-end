@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Row } from 'reactstrap';
 import Filter from './Filter';
 import ItemCard from './ItemCards';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoins } from '@fortawesome/free-solid-svg-icons'
 import BASE_URL from '../../Tools/URLs';
