@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Container } from 'reactstrap';
+import { Container } from 'reactstrap';
 import ItemDetails from './ItemDetails';
 import axios from 'axios';
 import BASE_URL from '../../Tools/URLs';

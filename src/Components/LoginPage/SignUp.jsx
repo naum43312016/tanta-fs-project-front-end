@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Form, Container, Row, Label, Input, FormGroup, Button, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { useContext, useState } from "react";
-import { Link, Router } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Signup } from '../../Tools/fetch';
 import { Authentication } from '../../Contexts/Authentication';
 import { invalidFields } from '../../Tools/WebsiteResponses';
@@ -40,10 +40,6 @@ const SignUp = (props) => {
       [e.target.name] : e.target.value
     })
   }
-  
-  useEffect(() => {
-    console.log(setAuthenticated)
-  }, [])
 
   return (
         <Container>
@@ -150,11 +146,11 @@ const SignUp = (props) => {
                 </Form>
               </ModalBody>
               <ModalFooter>
-                  <Button color="primary" disabled={(userInfos.firstName.length > 0 && userInfos.lastName.length > 0 && userInfos.email.length > 0 && userInfos.password.length > 0 && userInfos.confirmPassword.length > 0 && userInfos.phone.length > 0) ? false : true} onClick={submitUser} color="success">
+                  <Button color="primary" disabled={(userInfos.firstName.length > 0 && userInfos.lastName.length > 0 && userInfos.email.length > 0 && userInfos.password.length > 0 && userInfos.confirmPassword.length > 0 && userInfos.phone.length > 0) ? false : true} onClick={submitUser} >
                     Sign Up
                   </Button>
                   <Link to="/login">
-                  <Button color="primary" onClick={switchToLogin} color="success">
+                  <Button color="primary" onClick={switchToLogin} >
                     I Already Have An Account
                   </Button>
                   </Link>

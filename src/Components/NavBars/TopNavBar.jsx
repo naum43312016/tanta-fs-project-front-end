@@ -15,14 +15,16 @@ const TopNavBar = (props) => {
     const [openSignup, setOpenSignup] = useState(false);
     const [userCoins, setUserCoins] = useState(null);
     const { authenticated, setAuthenticated } = useContext(Authentication)
-    const sessionID = localStorage.getItem('sessionID')
 
     useEffect(() => {
+        const sessionID = localStorage.getItem('sessionID')
+
         axios.get(`${BASE_URL}/user/${sessionID}`)
         .then(res => res.data)
         .then(res => setUserCoins(res.coins))
         .catch(err=>console.error(err))
     }, [])
+
     return (
         <>
             <Row className="top-navbar">

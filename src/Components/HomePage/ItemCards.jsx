@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Card, CardBody, CardTitle, CardSubtitle, CardText, CardImg, Button, CardFooter } from 'reactstrap';
+import { Row, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import Pic from "./971c17c93f74bc7280e285153b2e1ace-700.jpg";
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoins } from '@fortawesome/free-solid-svg-icons';
@@ -22,8 +21,8 @@ const ItemCard = (props) => {
 
     const removeItemFromFavorites = (item) => {
         axios.delete(`${BASE_URL}/item/${item._id}/favorite`, userToken)
-            .then(res => console.log("Unsaved the item"))
-            .catch(err => console.log("Couldn't unsave the item"));
+            .then(console.log("Unsaved the item"))
+            .catch(console.log("Couldn't unsave the item"));
     }
 
     useEffect(() => {
@@ -40,7 +39,7 @@ const ItemCard = (props) => {
                 {props.cards.map((item) => {
                     return (<div key={item._id} id={item._id} style={{ backgroundColor: "#F7F7F7" }}>
                         <Link to={{ pathname: `/item/${item._id}`, state: item._id }}  >
-                            <div style={{ width: "100%", height: "200px", backgroundImage: `url(${item.imageUrl})` }} className="card-img" top width="100%" alt={item.name} />
+                            <div style={{ width: "100%", height: "200px", backgroundImage: `url(${item.imageUrl})` }} className="card-img" top="true" width="100%" alt={item.name} />
                         </Link>
                         <CardBody className="overflow-dots">
                             <Row>
@@ -53,7 +52,7 @@ const ItemCard = (props) => {
                                 <footer>
                                     <div className="align-items-center justify-content-end d-flex">
                                         {!favoriteItems.includes(`${item._id}`) ? <p style={{ fontSize: "18px", margin: "0" }} className="mr-2">Save</p> : <p style={{ fontSize: "18px", margin: "0" }} className="mr-2">Unsave</p>}
-                                        {!favoriteItems.includes(`${item._id}`) ? <FontAwesomeIcon color="red" style={{ cursor: "pointer", fontSize: "25px" }} onClick={() => addItemToFavorites(item)} cldivassName="mr-2 awesome-icon" icon={regularHeart}></FontAwesomeIcon> : <FontAwesomeIcon style={{ cursor: "pointer", fontSize: "25px" }} color="red" onClick={() => removeItemFromFavorites(item)} className=" awesome-icon" icon={solidHeart}></FontAwesomeIcon>}
+                                        {!favoriteItems.includes(`${item._id}`) ? <FontAwesomeIcon color="red" style={{ cursor: "pointer", fontSize: "25px" }} onClick={() => addItemToFavorites(item)} className="mr-2 awesome-icon" icon={regularHeart}></FontAwesomeIcon> : <FontAwesomeIcon style={{ cursor: "pointer", fontSize: "25px" }} color="red" onClick={() => removeItemFromFavorites(item)} className=" awesome-icon" icon={solidHeart}></FontAwesomeIcon>}
                                     </div>
                                 </footer>
                                 :
