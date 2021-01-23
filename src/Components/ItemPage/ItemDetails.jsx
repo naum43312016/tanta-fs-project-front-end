@@ -11,7 +11,7 @@ const ItemDetails = (props) => {
 
     const purchaseItem = async () => {
         if (await confirmPurchase()) {
-            axios.put(`${BASE_URL}/purchase/${props.item._id}`)
+            axios.put(`${BASE_URL}/purchase/${props.item._id}`, '', {headers: {authorization: 'Bearer ' + localStorage.getItem('token')}})
                 .then(res => console.log(res), itemPurchased(), history.push('/'))
                 .then(err => console.log("Unable to purchase item"))
         }
