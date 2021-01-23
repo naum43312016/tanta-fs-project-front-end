@@ -80,7 +80,7 @@ const updatedProfile = (msg, icon) => {
   })
 }
 
-const confirmLogout = (setAuthenticated, setOpenSignup, ) => {
+const confirmLogout = (setAuthenticated, setOpenSignup) => {
   return Swal.fire({
     text: "Logout?",
     icon: 'warning',
@@ -98,4 +98,32 @@ const confirmLogout = (setAuthenticated, setOpenSignup, ) => {
   })
 }
 
-export { invalidFields, wrongCredentials, signUpSucces, signInSuccess, noResults, itemUploaded, docDeleted, formIssue, updatedProfile, confirmLogout };
+const confirmPurchase = () => {
+  return Swal.fire({
+    text: "Are you sure you want to purchase this item?",
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Yes'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  })
+}
+
+const itemPurchased = () => {
+  return Swal.fire({
+    title: 'Purchased !',
+    text: 'Redirecting...',
+    icon: 'success',
+    timer: 1000,
+    showConfirmButton: false,
+  })
+}
+
+export { invalidFields, wrongCredentials, signUpSucces, signInSuccess, noResults, itemUploaded, docDeleted, formIssue, updatedProfile, confirmLogout, confirmPurchase, itemPurchased };
