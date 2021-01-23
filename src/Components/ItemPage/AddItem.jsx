@@ -84,7 +84,7 @@ const AddItem = () => {
             {previewPic && <div className="image-preview"><img src={previewPic} alt="loaded pic" /></div>}
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>
                 <DropdownToggle caret color="light">
-                    {categories.categories && categories.selected || 'Category'} {/* Setting the select name based on selected category  */}
+                    {(categories.categories && categories.selected) || 'Category'} {/* Setting the select name based on selected category  */}
                 </DropdownToggle>
                 <DropdownMenu >
                     {categories.categories && categories.categories.map((category, index) => (

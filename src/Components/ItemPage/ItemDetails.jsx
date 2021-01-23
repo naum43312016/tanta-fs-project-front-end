@@ -1,4 +1,4 @@
-import { Row, Container, Button } from 'reactstrap';
+import { Row, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoins } from '@fortawesome/free-solid-svg-icons'
 import BASE_URL from '../../Tools/URLs';
@@ -19,7 +19,7 @@ const ItemDetails = (props) => {
 
     return (
         <div className="item-info">
-            <img src={props.item.imageUrl} style={{ maxWidth: "80%", maxHeight: "300px" }} className="rounded mb-4"></img>
+            <img src={props.item.imageUrl} style={{ maxWidth: "80%", maxHeight: "300px" }} alt="" className="rounded mb-4"></img>
             <div classNameName="mt-5 item-text">
                 <div>
                     <Row style={{ width: "80%" }} className="mb-2 align-items-center">
@@ -28,7 +28,7 @@ const ItemDetails = (props) => {
                     </Row>
                     <h5 className="mb-3">{props.item.category}</h5>
                     <p>{props.item.description}</p>
-                    <a href={props.item.imageUrl} target="_blank"><i></i>Full Image</a>
+                    <a href={props.item.imageUrl} target="_blank" rel="noreferrer"><i></i>Full Image</a>
                 </div>
                 <Button color="primary" className="mt-3 ml-n1 d-block border" onClick={purchaseItem}>Purchase</Button>
             </div>
