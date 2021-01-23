@@ -14,13 +14,29 @@ const Home = () => {
 
     useEffect(() => { //getting all items on first app render
         axios.get(BASE_URL + '/home/get-all-items')
-            .then(res => setCards(res.data))
+            .then(res => {
+                const availableCards = []
+                res.data.forEach(item => {
+                    if(item.status == 'available') {
+                        availableCards.push(item)
+                    }
+                })
+                setCards(availableCards)
+            })
             .catch(err => 'There was an issue fetching all the items');
     }, [])
 
     useEffect(() => { //fetching the right category
         axios.get(BASE_URL + `/search/item?category=${category}&price=${price}&name=${search}`)
-            .then(res => setCards(res.data.items))
+            .then(res => {
+                const availableCards = []
+                res.data.items.forEach(item => {
+                    if(item.status == 'available') {
+                        availableCards.push(item)
+                    }
+                })
+                setCards(availableCards)
+            })
             .catch(err => console.log('There was an issue fetching the items of the requested category'));
     }, [category, price, search])
 

@@ -10,7 +10,7 @@ const ItemPage = () => {
     useEffect(() => {
         axios.get(BASE_URL + window.location.pathname)
         .then(res => setItem(res.data))
-        .then(err => console.log("Couldn't get item"));
+        .catch(err => console.log("Couldn't get item"));
     }, [])
 
     return (

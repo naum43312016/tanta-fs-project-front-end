@@ -7,23 +7,17 @@ import { faCog, faCoins, faHome, faPlus, faUser } from '@fortawesome/free-solid-
 import SignUp from '../LoginPage/SignUp';
 import Login from '../LoginPage/Login';
 import { confirmLogout } from '../../Tools/WebsiteResponses';
+import { UserCoins } from '../../Contexts/UserCoins'
 import axios from 'axios';
 import BASE_URL from '../../Tools/URLs';
 
 const TopNavBar = (props) => {
     const [openLogin, setOpenLogin] = useState(false);
     const [openSignup, setOpenSignup] = useState(false);
-    const [userCoins, setUserCoins] = useState(null);
+    const { userCoins, setUserCoins } = useContext(UserCoins);
+
     const { authenticated, setAuthenticated } = useContext(Authentication)
 
-    useEffect(() => {
-        const sessionID = localStorage.getItem('sessionID')
-
-        axios.get(`${BASE_URL}/user/${sessionID}`)
-        .then(res => res.data)
-        .then(res => setUserCoins(res.coins))
-        .catch(err=>console.error(err))
-    }, [])
 
     return (
         <>
