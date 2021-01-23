@@ -1,6 +1,6 @@
 import BASE_URL from './URLs';
 const axios = require('axios');
-const { invalidFields, wrongCredentials, signUpSucces, signInSuccess, updatedProfile } = require('./WebsiteResponses');
+const { invalidFields, signUpSucces, signInSuccess, updatedProfile } = require('./WebsiteResponses');
 
 const validateEmail = (email) => {
   const re = /\S+@\S+\.\S+/;

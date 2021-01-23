@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Authentication } from './Contexts/Authentication';
-import { Container, Navbar } from "reactstrap";
+import { Container } from "reactstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './Styles/App.css';
 import Home from './Components/HomePage/Home';
@@ -12,7 +12,6 @@ import ItemPage from './Components/ItemPage/ItemPage';
 
 const App = () => {
   const [authenticated, setAuthenticated] = useState(false); // true just for now
-  const [adminConfirmation, setAdminConfirmation] = useState(false);
   const token = localStorage.getItem('token') || null
 
   useEffect(() => {
