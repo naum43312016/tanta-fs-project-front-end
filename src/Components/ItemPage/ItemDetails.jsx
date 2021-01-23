@@ -1,8 +1,21 @@
 import { Row, Container, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoins } from '@fortawesome/free-solid-svg-icons'
+import BASE_URL from '../../Tools/URLs';
+import axios from 'axios';
+import { confirmPurchase, itemPurchased } from '../../Tools/WebsiteResponses';
+import { useHistory } from 'react-router-dom';
 
 const ItemDetails = (props) => {
+    const history = useHistory();
+
+    const purchaseItem = async () => {
+        if (await confirmPurchase()) {
+            axios.put(`${BASE_URL}/purchase/${props.item._id}`)
+                .then(res => console.log(res), itemPurchased(), history.push('/'))
+                .then(err => console.log("Unable to purchase item"))
+        }
+    }
 
     return (
         <div className="item-info">
@@ -17,7 +30,7 @@ const ItemDetails = (props) => {
                     <p>{props.item.description}</p>
                     <a href={props.item.imageUrl} target="_blank"><i></i>Full Image</a>
                 </div>
-                <Button color="primary" className="mt-3 ml-n1 d-block border">Purchase</Button>
+                <Button color="primary" className="mt-3 ml-n1 d-block border" onClick={purchaseItem}>Purchase</Button>
             </div>
         </div>
     )
