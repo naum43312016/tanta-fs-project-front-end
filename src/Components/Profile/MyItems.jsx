@@ -3,9 +3,9 @@ import ItemCards from "../HomePage/ItemCards"
 import '../../Styles/MyItems.css'
 import { useState, useEffect } from "react"
 import axios from 'axios';
-import { BASE_URL } from '../HomePage/Home'
+import BASE_URL from '../../Tools/URLs';
 
-const MyItems = (props) => {
+const MyItems = () => {
     const [filter, setFilter] = useState("All")
     const [cards, setCards] = useState([]);
     const [sellingItems, setSellingItems] = useState([]);

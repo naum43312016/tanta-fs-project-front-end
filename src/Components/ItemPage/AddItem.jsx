@@ -7,7 +7,7 @@ import '../../Styles/AddItem.css'
 import { invalidFields } from '../../Tools/WebsiteResponses';
 import { itemUploaded } from '../../Tools/WebsiteResponses';
 import {Redirect} from 'react-router'
-import {BASE_URL} from '../HomePage/Home'
+import BASE_URL from '../../Tools/URLs';
 
 const AddItem = () => {
     const [itemInfos, setItemInfos] = useState(null)

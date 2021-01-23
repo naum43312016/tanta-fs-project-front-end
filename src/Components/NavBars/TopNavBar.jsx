@@ -14,6 +14,7 @@ const TopNavBar = (props) => {
     const { authenticated, setAuthenticated } = useContext(Authentication)
 
     return (
+        <>
             <Row className="top-navbar">
                 <Link style={{textDecoration:"none"}} className="offset-1 col-7 tanta-logo" to='/'>
                     <h3 className="logo mt-2 pl-5">Tanta</h3>
@@ -50,6 +51,8 @@ const TopNavBar = (props) => {
                     </>
                 }
             </Row>
+            <Row style={{ backgroundColor: "#7AE582", height: "30px" }} />
+            </>
     )
 }
 

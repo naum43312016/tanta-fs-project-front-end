@@ -6,8 +6,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoins } from '@fortawesome/free-solid-svg-icons'
-
-export const BASE_URL = process.env.REACT_APP_BASE_URL;
+import BASE_URL from '../../Tools/URLs';
 
 const Home = () => {
     const [search, setSearch] = useState('');
@@ -29,7 +28,6 @@ const Home = () => {
 
     return (
         <div>
-            <Row style={{ backgroundColor: "#7AE582", height: "30px" }} className="search-bar justify-content-center align-items-center" />
             <Filter category={category} setCategory={setCategory} setPrice={setPrice} setSearch={setSearch} />
             <div className="category-title">
                 <p className="mr-sm-5 mr-3">{category === "" && price === "" ? "All Items" : category}</p>

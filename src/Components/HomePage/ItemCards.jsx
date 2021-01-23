@@ -14,14 +14,6 @@ const ItemCard = (props) => {
     const BASE_URL = process.env.REACT_APP_BASE_URL;
     const userToken = { headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') } }
 
-    useEffect(() => {
-        if (loggedIn != null) {
-            axios.get(`${BASE_URL}/user/favorites`, userToken)
-                .then(res => setFavoriteItems(res.data))
-                .catch(err => "Couldn't get user favorites")
-        }
-    }, [{}])
-
     const addItemToFavorites = (item) => {
         axios.post(BASE_URL + `/item/${item._id}/favorite`, '', userToken)
             .then(res => console.log("Saved the item as favorite"))
@@ -33,6 +25,14 @@ const ItemCard = (props) => {
             .then(res => console.log("Unsaved the item"))
             .catch(err => console.log("Couldn't unsave the item"));
     }
+
+    useEffect(() => {
+        if (loggedIn != null) {
+            axios.get(`${BASE_URL}/user/favorites`, userToken)
+                .then(res => setFavoriteItems(res.data))
+                .catch(err => "Couldn't get user favorites")
+        }
+    }, [addItemToFavorites, removeItemFromFavorites])
 
     return (
         <div>

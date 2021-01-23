@@ -1,4 +1,4 @@
-import {BASE_URL as base_URL} from '../Components/HomePage/Home'
+import BASE_URL from './URLs';
 const axios = require('axios');
 const { invalidFields, wrongCredentials, signUpSucces, signInSuccess, updatedProfile } = require('./WebsiteResponses');
 
@@ -28,7 +28,7 @@ const checkFields = (userDetails) => {
 
 const Signup = (userDetails, setAuthenticated) => {
   if (checkFields(userDetails) === true) {
-    return axios.post(`${base_URL}/signup`, userDetails)
+    return axios.post(`${BASE_URL}/signup`, userDetails)
       .then(
         (res) => res.status === 200 ? (localStorage.setItem("token", res.data.token), signUpSucces(), localStorage.setItem('firstName', res.data.user.firstName), localStorage.setItem("sessionID", res.data.user._id),
                   setAuthenticated(true)) : null
@@ -38,7 +38,7 @@ const Signup = (userDetails, setAuthenticated) => {
 };
 
 const SignIn = (userDetails, setAuthenticated) => {
-  return axios.post(`${base_URL}/login`, userDetails)
+  return axios.post(`${BASE_URL}/login`, userDetails)
     .then(
       (res) => res.status === 200 ? (localStorage.setItem("token", res.data.token), signInSuccess(), localStorage.setItem("firstName", res.data.user.firstName), localStorage.setItem("sessionID", res.data.user._id),
       setAuthenticated(true)) : null
@@ -50,7 +50,7 @@ const SignIn = (userDetails, setAuthenticated) => {
 const getCookies = (setAuthenticated) => {
   const token = localStorage.getItem("token");
   const config = { headers: { Authorization: "Bearer " + token } }
-  return axios.get(base_URL + "/", config)
+  return axios.get(BASE_URL + "/", config)
     .then(res =>
       res.status === 200
         ? (setAuthenticated(true))
@@ -62,7 +62,7 @@ const getCookies = (setAuthenticated) => {
 const checkForAdmin = (setState, bool, bool2) => {
   const token = localStorage.getItem("token");
   const config = { headers: { Authorization: "Bearer " + token } }
-  axios.get(base_URL +  '/upload', config)
+  axios.get(BASE_URL +  '/upload', config)
     .then(res => setState(bool))
     .catch(err => setState(bool2))
 }
@@ -70,7 +70,7 @@ const checkForAdmin = (setState, bool, bool2) => {
 const submitProfileChanges = (details, userDocument) => {
   if (checkFields(details) === true) {
     console.log('ho')
-    axios.put(base_URL + `/profile/${userDocument._id}`, {
+    axios.put(BASE_URL + `/profile/${userDocument._id}`, {
       details
     })
       .then(res => updatedProfile("Profile updated", "success"))

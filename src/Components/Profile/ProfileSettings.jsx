@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react'
 import {Container,Form, Input, Button} from 'reactstrap'
 import '../../Styles/ProfileSettings.css'
-import {BASE_URL} from '../HomePage/Home'
+import BASE_URL from '../../Tools/URLs';
 
 const ProfileSettings = () => {
     const [profileInfos, setProfileInfos] = useState(null)
