@@ -1,6 +1,6 @@
 import BASE_URL from './URLs';
 const axios = require('axios');
-const { invalidFields, signUpSucces, signInSuccess, updatedProfile } = require('./WebsiteResponses');
+const { invalidFields, signUpSuccess, signInSuccess, updatedProfile } = require('./WebsiteResponses');
 
 const validateEmail = (email) => {
   const re = /\S+@\S+\.\S+/;
@@ -30,7 +30,7 @@ const Signup = (userDetails, setAuthenticated) => {
   if (checkFields(userDetails) === true) {
     return axios.post(`${BASE_URL}/signup`, userDetails)
       .then(
-        (res) => res.status === 200 ? (localStorage.setItem("token", res.data.token), signUpSucces(), localStorage.setItem('firstName', res.data.user.firstName), localStorage.setItem("sessionID", res.data.user._id),
+        (res) => res.status === 200 ? (localStorage.setItem("token", res.data.token), signUpSuccess(), localStorage.setItem('firstName', res.data.user.firstName), localStorage.setItem("sessionID", res.data.user._id),
                   setAuthenticated(true)) : null
       )
       .catch(err => console.error(err))
@@ -41,7 +41,7 @@ const SignIn = (userDetails, setAuthenticated) => {
   return axios.post(`${BASE_URL}/login`, userDetails)
     .then(
       (res) => res.status === 200 ? (localStorage.setItem("token", res.data.token), signInSuccess(), localStorage.setItem("firstName", res.data.user.firstName), localStorage.setItem("sessionID", res.data.user._id),
-      setAuthenticated(true)) : null
+        setAuthenticated(true)) : null
     )
     .catch((err) => console.error(err));
 };

@@ -16,7 +16,7 @@ const wrongCredentials = (message) => {
   })
 }
 
-const signUpSucces = () => {
+const signUpSuccess = () => {
   return Swal.fire({
     title: 'Signed Up',
     icon: 'success',
@@ -126,4 +126,4 @@ const itemPurchased = () => {
   })
 }
 
-export { invalidFields, wrongCredentials, signUpSucces, signInSuccess, noResults, itemUploaded, docDeleted, formIssue, updatedProfile, confirmLogout, confirmPurchase, itemPurchased };
+export { invalidFields, wrongCredentials, signUpSuccess, signInSuccess, noResults, itemUploaded, docDeleted, formIssue, updatedProfile, confirmLogout, confirmPurchase, itemPurchased };

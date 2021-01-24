@@ -21,8 +21,8 @@ const ItemCard = (props) => {
 
     const removeItemFromFavorites = (item) => {
         axios.delete(`${BASE_URL}/item/${item._id}/favorite`, userToken)
-            .then(console.log("Unsaved the item"))
-            .catch(console.log("Couldn't unsave the item"));
+            .then(res => console.log("Removed the item from favorites"))
+            .catch(err => console.log("Couldn't remove the item from favorites"));
     }
 
     useEffect(() => {

@@ -16,35 +16,35 @@ const MyItems = () => {
     const filterItems = (array) => {
         let cardsArray = [];
         axios.get('http://localhost:3001/home/get-all-items')
-        .then((res) => {
-            if (filter === "All") {
-                return setCards(res.data);
-            }
-            for (let i of array) {
-                res.data.forEach((item) => {
-                    if (item._id === i) {
-                        cardsArray.push(item);
-                    }
-                })
-            }
-            setCards(cardsArray);
-            console.log(cardsArray);
-        })
-        .catch(err => 'There was an issue fetching all the items');
+            .then((res) => {
+                if (filter === "All") {
+                    return setCards(res.data);
+                }
+                for (let i of array) {
+                    res.data.forEach((item) => {
+                        if (item._id === i) {
+                            cardsArray.push(item);
+                        }
+                    })
+                }
+                setCards(cardsArray);
+                console.log(cardsArray);
+            })
+            .catch(err => 'There was an issue fetching all the items');
     }
 
     useEffect(() => { //getting all items on first app render, we will change the link later
         switch (filter) {
             case "All": filterItems();
-            break;
+                break;
             case "Offered": filterItems(sellingItems);
-            break;
+                break;
             case "Purchased": filterItems(purchasedItems);
-            break;
+                break;
             case "Saved": filterItems(favoriteItems);
-            break;
-            case "Sold": filterItems(purchasedItems);
-            break;
+                break;
+            case "Sold": filterItems(soldItems);
+                break;
         }
     }, [filter])
 
@@ -65,7 +65,7 @@ const MyItems = () => {
                 <Button color="light" onClick={() => setFilter("All")}> All </Button>
                 <Button color="light" onClick={() => setFilter("Offered")}> Offered </Button>
                 <Button color="light" onClick={() => setFilter("Saved")}> Saved </Button>
-                <Button color="light" onClick={() => setFilter("Purchased")}> Purshased </Button>
+                <Button color="light" onClick={() => setFilter("Purchased")}> Purchased </Button>
                 <Button color="light" onClick={() => setFilter("Sold")}> Sold </Button>
             </div>
             <h3 className="mt-2">{filter}</h3>
