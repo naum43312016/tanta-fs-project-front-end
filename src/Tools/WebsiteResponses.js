@@ -34,14 +34,6 @@ const signInSuccess = () => {
   })
 }
 
-const noResults = () => {
-  return Swal.fire({
-    title: 'No results',
-    icon: 'error',
-    showConfirmButton: false,
-  })
-}
-
 const formIssue = (msg) => {
   return Swal.fire({
     title: msg,
@@ -126,4 +118,13 @@ const itemPurchased = () => {
   })
 }
 
-export { invalidFields, wrongCredentials, signUpSuccess, signInSuccess, noResults, itemUploaded, docDeleted, formIssue, updatedProfile, confirmLogout, confirmPurchase, itemPurchased };
+const cantBuy = () => {
+  return Swal.fire({
+    title: "You don't have enough coins to purchase this item",
+    icon: 'warning',
+    timer: 1000,
+    showConfirmButton: false,
+  })
+}
+
+export { invalidFields, wrongCredentials, signUpSuccess, signInSuccess, itemUploaded, docDeleted, formIssue, updatedProfile, confirmLogout, confirmPurchase, itemPurchased, cantBuy };
