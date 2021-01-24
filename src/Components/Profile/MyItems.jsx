@@ -6,22 +6,22 @@ import axios from 'axios';
 import BASE_URL from '../../Tools/URLs';
 
 const MyItems = () => {
-    const [filter, setFilter] = useState("Offered")
+    const [filter, setFilter] = useState("Selling")
     const [cards, setCards] = useState([])
     // const [sellingItems, setSellingItems] = useState([]);
     // const [purchasedItems, setPurchasedItems] = useState([]);
     // const [favoriteItems, setFavoriteItems] = useState([]);
     // const [soldItems, setSoldItems] = useState([]);
-    
+
 
     useEffect(() => {
         console.log('updated')
         axios.get(`${BASE_URL}/user/filter?type=${filter.toLowerCase()}`)
-        .then(res => setCards(res))
-        .catch(err => console.log(err))
+            .then(res => setCards(res))
+            .catch(err => console.log(err))
     }, [filter])
 
-    
+
     return (
         <div className="my-items-container mt-2">
             <div> </div>
