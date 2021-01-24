@@ -7,23 +7,16 @@ import { faCog, faCoins, faHome, faPlus, faUser } from '@fortawesome/free-solid-
 import SignUp from '../LoginPage/SignUp';
 import Login from '../LoginPage/Login';
 import { confirmLogout } from '../../Tools/WebsiteResponses';
+import { UserCoins } from '../../Contexts/UserCoins'
 import axios from 'axios';
 import BASE_URL from '../../Tools/URLs';
 
 const TopNavBar = (props) => {
     const [openLogin, setOpenLogin] = useState(false);
     const [openSignup, setOpenSignup] = useState(false);
-    const [userCoins, setUserCoins] = useState(null);
+
     const { authenticated, setAuthenticated } = useContext(Authentication)
 
-    useEffect(() => {
-        const sessionID = localStorage.getItem('sessionID')
-
-        axios.get(`${BASE_URL}/user/${sessionID}`)
-        .then(res => res.data)
-        .then(res => setUserCoins(res.coins))
-        .catch(err=>console.error(err))
-    }, [])
 
     return (
         <>
@@ -34,7 +27,7 @@ const TopNavBar = (props) => {
                 {authenticated ?
                     <>   
                         <div style={{marginRight: '10px'}}> 
-                            <span style={{ color: "white", fontWeight:"500",fontSize: "20px"}}>{userCoins && userCoins}</span> <FontAwesomeIcon style={{ color: "#ffd700", height: "25px"}} icon={faCoins} size="2x"></FontAwesomeIcon>
+                            <span style={{ color: "white", fontWeight:"500",fontSize: "20px"}}>{props.coins}</span> <FontAwesomeIcon style={{ color: "#ffd700", height: "25px"}} icon={faCoins} size="2x"></FontAwesomeIcon>
                         </div>
                         <Link to={"/"}>
                             <FontAwesomeIcon style={{ color: "white", height: "25px" }} icon={faHome} size="2x" ></FontAwesomeIcon>

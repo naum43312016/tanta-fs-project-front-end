@@ -11,16 +11,37 @@ const Home = () => {
     const [category, setCategory] = useState('')
     const [price, setPrice] = useState('');
     const [cards, setCards] = useState([]);
+    const [updateCards, setUpdateCards] = useState(false)
+
+    const getCards = async () => {
+        await axios.get(BASE_URL + '/home/get-all-items')
+        .then(res => {
+            const availableCards = []
+            res.data.forEach(item => {
+                if(item.status == 'available') {
+                    availableCards.push(item)
+                }
+            })
+            setCards(availableCards)
+        })
+        .catch(err => 'There was an issue fetching all the items');
+    }
 
     useEffect(() => { //getting all items on first app render
-        axios.get(BASE_URL + '/home/get-all-items')
-            .then(res => setCards(res.data))
-            .catch(err => 'There was an issue fetching all the items');
-    }, [])
+            getCards()
+    }, [updateCards, !updateCards])
 
-    useEffect(() => { //fetching the right category
-        axios.get(BASE_URL + `/search/item?category=${category}&price=${price}&name=${search}`)
-            .then(res => setCards(res.data.items))
+    useEffect(async() => { //fetching the right category
+        await axios.get(BASE_URL + `/search/item?category=${category}&price=${price}&name=${search}`)
+            .then(res => {
+                const availableCards = []
+                res.data.items.forEach(item => {
+                    if(item.status == 'available') {
+                        availableCards.push(item)
+                    }
+                })
+                setCards(availableCards)
+            })
             .catch(err => console.log('There was an issue fetching the items of the requested category'));
     }, [category, price, search])
 
@@ -31,7 +52,7 @@ const Home = () => {
                 <p className="mr-sm-5 mr-3">{category === "" && price === "" ? "All Items" : category}</p>
                 {price === '' ? null : <>{category !== "" ? <p className="mr-sm-5 mr-3">|</p> : null}<p>{price} <FontAwesomeIcon style={{ color: "orange", fontSize: "20px" }} icon={faCoins} /></p></>}
             </div>
-            <ItemCard cards={cards} />
+            <ItemCard cards={cards} setUpdateCards={setUpdateCards} updateCards={updateCards}/>
         </div>
     )
 }
