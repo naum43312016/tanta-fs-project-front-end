@@ -6,13 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoins } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as regularHeart } from "@fortawesome/fontawesome-free-regular";
+import BASE_URL from '../../Tools/URLs';
 
 const ItemCard = (props) => {
     const [favoriteItems, setFavoriteItems] = useState([]);
     const [loggedIn, setLoggedIn] = useState(localStorage.getItem("sessionID"));
     const [toggleFav, setToggle] = useState(true) // to rerender the page when add/remove favourite
-
-    const BASE_URL = process.env.REACT_APP_BASE_URL;
     const userToken = { headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') } }
     
     const addItemToFavorites = async(item) => {
@@ -33,7 +32,6 @@ const ItemCard = (props) => {
             .then(res => res.data)
             .then(res => setFavoriteItems(res))
         setToggle(!toggleFav)
-
     }
 
     useEffect(async () => {
