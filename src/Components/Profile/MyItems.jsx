@@ -7,24 +7,32 @@ import BASE_URL from '../../Tools/URLs';
 
 const MyItems = () => {
     const [filter, setFilter] = useState("Offered")
-    const [sellingItems, setSellingItems] = useState([]);
-    const [purchasedItems, setPurchasedItems] = useState([]);
-    const [favoriteItems, setFavoriteItems] = useState([]);
-    const [soldItems, setSoldItems] = useState([]);
     const [allItems, setAllItems] = useState([]);
-    const [filteredArray, setFilteredArray] = useState([]);
+    const [allPurchasedItems, setAllPurchasedItems] = useState();
     const [cards, setCards] = useState([]);
+
+    const fetchFilteredItems = (array) => {
+        axios.get(BASE_URL + `/user/filter?type=${filter.toLowerCase()}`, { headers: { authorization: 'Bearer ' + localStorage.getItem('token') } })
+            .then(res => setCards(array.filter(item => res.data.includes(item._id))))
+            .catch(err => console.log("Couldn't get filtered items"));
+    }
 
     useEffect(() => {
         axios.get(BASE_URL + '/home/get-all-items')
             .then(res => setAllItems(res.data))
             .catch(err => null);
+        axios.get(BASE_URL + '/get-all-purchased-items')
+            .then(res => setAllPurchasedItems(res.data))
+            .catch(err => null);
     }, [])
 
     useEffect(() => {
-        axios.get(BASE_URL + `/user/filter?type=${filter.toLowerCase()}`, { headers: { authorization: 'Bearer ' + localStorage.getItem('token') } })
-            .then(res => setCards(allItems.filter(item => res.data.includes(item._id))))
-            .catch(err => console.log("Couldn't get filtered items"));
+        if (filter === 'Favorites' || filter === 'Selling') {
+            fetchFilteredItems(allItems);
+        }
+        else if (filter === 'Purchased' || filter === 'Sold') {
+            fetchFilteredItems(allPurchasedItems);
+        }
     }, [filter])
 
     return (
