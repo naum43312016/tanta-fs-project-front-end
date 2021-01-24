@@ -14,7 +14,6 @@ import BASE_URL from '../../Tools/URLs';
 const TopNavBar = (props) => {
     const [openLogin, setOpenLogin] = useState(false);
     const [openSignup, setOpenSignup] = useState(false);
-    const { userCoins, setUserCoins } = useContext(UserCoins);
 
     const { authenticated, setAuthenticated } = useContext(Authentication)
 
@@ -28,7 +27,7 @@ const TopNavBar = (props) => {
                 {authenticated ?
                     <>   
                         <div style={{marginRight: '10px'}}> 
-                            <span style={{ color: "white", fontWeight:"500",fontSize: "20px"}}>{userCoins && userCoins}</span> <FontAwesomeIcon style={{ color: "#ffd700", height: "25px"}} icon={faCoins} size="2x"></FontAwesomeIcon>
+                            <span style={{ color: "white", fontWeight:"500",fontSize: "20px"}}>{props.coins}</span> <FontAwesomeIcon style={{ color: "#ffd700", height: "25px"}} icon={faCoins} size="2x"></FontAwesomeIcon>
                         </div>
                         <Link to={"/"}>
                             <FontAwesomeIcon style={{ color: "white", height: "25px" }} icon={faHome} size="2x" ></FontAwesomeIcon>

@@ -4,7 +4,7 @@ import ItemDetails from './ItemDetails';
 import axios from 'axios';
 import BASE_URL from '../../Tools/URLs';
 
-const ItemPage = () => {
+const ItemPage = (props) => {
     const [item, setItem] = useState([]);
 
     useEffect(() => {
@@ -16,7 +16,7 @@ const ItemPage = () => {
     return (
         <Container className="item">
             <p className="item-title mb-5">{item.name}</p>
-            <ItemDetails item={item} />
+            <ItemDetails item={item} coins={props.userCoins} setUserCoins={props.setUserCoins}/>
         </Container>
     )
 }

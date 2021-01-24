@@ -5,12 +5,10 @@ import BASE_URL from '../../Tools/URLs';
 import axios from 'axios';
 import { confirmPurchase, itemPurchased } from '../../Tools/WebsiteResponses';
 import { useHistory } from 'react-router-dom';
-import { UserCoins } from '../../Contexts/UserCoins'
-import { useContext } from 'react';
+
 
 const ItemDetails = (props) => {
     const history = useHistory();
-    const {userCoins, setUserCoins} = useContext(UserCoins);
     const sessionID = localStorage.getItem('sessionID')
 
     const purchaseItem = async () => {
@@ -19,7 +17,7 @@ const ItemDetails = (props) => {
                 .then(res => console.log(res), itemPurchased(), history.push('/'))
                 .catch(err => console.log(err))
             await axios.get(`${BASE_URL}/user/${sessionID}`)
-            .then(res => setUserCoins(res.data.coins))
+
         }
     }
 

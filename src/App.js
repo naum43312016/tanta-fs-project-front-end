@@ -15,10 +15,17 @@ import BASE_URL from './Tools/URLs';
 
 const App = () => {
   const [authenticated, setAuthenticated] = useState(false)
-  const [userCoins, setUserCoins] = useState(null)
+  const [userCoins, setUserCoins] = useState(0)
   const token = localStorage.getItem('token') || null
   const sessionID = localStorage.getItem('sessionID')
- 
+
+  const updateCoins = async () => {
+    await axios.get(`${BASE_URL}/user/${sessionID}`)
+    .then(res => {
+        setUserCoins(res.data.coins)
+    })
+  }
+
   useEffect(() => {
     if(token) setAuthenticated(true)
     axios.get(`${BASE_URL}/user/${sessionID}`)
@@ -30,15 +37,17 @@ const App = () => {
 
   return (
     <Container fluid>
-      <Authentication.Provider value={{ authenticated, setAuthenticated, userCoins, setUserCoins }}>
-        <UserCoins.Provider value={{userCoins, setUserCoins }}>
+      <Authentication.Provider value={{ authenticated, setAuthenticated }}>
+        <UserCoins.Provider value={{userCoins, setUserCoins, updateCoins }}>
         <Router>
-          <TopNavBar coins={userCoins}/>
+          <TopNavBar coins={userCoins && userCoins}/>
           <Switch>
               <Route path="/add-item" component={AddItem}/>
               <Route path="/my-items" component={MyItems}/>
               <Route path="/settings" component={ProfileSettings} />
-              <Route path="/item/:id" component={ItemPage} />
+              <Route path="/item/:id">
+                <ItemPage coins={userCoins} setUserCoins={setUserCoins}/>  
+              </Route>
               <Route path="/" component={Home} />
           </Switch>
         </Router>

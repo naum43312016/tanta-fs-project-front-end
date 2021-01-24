@@ -19,14 +19,21 @@ const ItemCard = (props) => {
         await axios.post(BASE_URL + `/item/${item._id}/favorite`, '', userToken)
             .then(console.log("Saved the item as favorite"))
             .catch(err => console.log("Couldn't save the item as favorite"));
-            setToggle(!toggleFav)
+        await axios.get(`${BASE_URL}/user/favorites`, userToken)
+        .then(res => res.data)
+        .then(res => setFavoriteItems(res))
+        setToggle(!toggleFav)
     }
 
     const removeItemFromFavorites = async (item) => {
         await axios.delete(`${BASE_URL}/item/${item._id}/favorite`, userToken)
             .then(console.log("Unsaved the item"))
             .catch(err => console.log("Couldn't unsave the item"));
-            setToggle(!toggleFav)
+        await axios.get(`${BASE_URL}/user/favorites`, userToken)
+            .then(res => res.data)
+            .then(res => setFavoriteItems(res))
+        setToggle(!toggleFav)
+
     }
 
     useEffect(async () => {
