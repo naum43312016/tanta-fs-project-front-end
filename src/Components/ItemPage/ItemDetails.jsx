@@ -6,21 +6,25 @@ import axios from 'axios';
 import { confirmPurchase, itemPurchased } from '../../Tools/WebsiteResponses';
 import { useHistory } from 'react-router-dom';
 
+
 const ItemDetails = (props) => {
     const history = useHistory();
+    const sessionID = localStorage.getItem('sessionID')
 
     const purchaseItem = async () => {
         if (await confirmPurchase()) {
-            axios.put(`${BASE_URL}/purchase/${props.item._id}`, '', {headers: {authorization: 'Bearer ' + localStorage.getItem('token')}})
+            await axios.put(`${BASE_URL}/purchase/${props.item._id}`, '', {headers: {authorization: 'Bearer ' + localStorage.getItem('token')}})
                 .then(res => console.log(res), itemPurchased(), history.push('/'))
-                .then(err => console.log("Unable to purchase item"))
+                .catch(err => console.log(err))
+            await axios.get(`${BASE_URL}/user/${sessionID}`)
+
         }
     }
 
     return (
         <div className="item-info">
             <img src={props.item.imageUrl} style={{ maxWidth: "80%", maxHeight: "300px" }} alt="" className="rounded mb-4"></img>
-            <div classNameName="mt-5 item-text">
+            <div className="mt-5 item-text">
                 <div>
                     <Row style={{ width: "80%" }} className="mb-2 align-items-center">
                         <h3 className="col-6">{props.item.condition}</h3>

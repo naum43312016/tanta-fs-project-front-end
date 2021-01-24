@@ -4,19 +4,19 @@ import ItemDetails from './ItemDetails';
 import axios from 'axios';
 import BASE_URL from '../../Tools/URLs';
 
-const ItemPage = () => {
+const ItemPage = (props) => {
     const [item, setItem] = useState([]);
 
     useEffect(() => {
         axios.get(BASE_URL + window.location.pathname)
         .then(res => setItem(res.data))
-        .then(err => console.log("Couldn't get item"));
+        .catch(err => console.log("Couldn't get item"));
     }, [])
 
     return (
         <Container className="item">
             <p className="item-title mb-5">{item.name}</p>
-            <ItemDetails item={item} />
+            <ItemDetails item={item} coins={props.userCoins} setUserCoins={props.setUserCoins}/>
         </Container>
     )
 }

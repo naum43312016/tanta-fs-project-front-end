@@ -10,28 +10,39 @@ import { faHeart as regularHeart } from "@fortawesome/fontawesome-free-regular";
 const ItemCard = (props) => {
     const [favoriteItems, setFavoriteItems] = useState([]);
     const [loggedIn, setLoggedIn] = useState(localStorage.getItem("sessionID"));
+    const [toggleFav, setToggle] = useState(true) // to rerender the page when add/remove favourite
+
     const BASE_URL = process.env.REACT_APP_BASE_URL;
     const userToken = { headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') } }
-
-    const addItemToFavorites = (item) => {
-        axios.post(BASE_URL + `/item/${item._id}/favorite`, '', userToken)
-            .then(res => console.log("Saved the item as favorite"))
+    
+    const addItemToFavorites = async(item) => {
+        await axios.post(BASE_URL + `/item/${item._id}/favorite`, '', userToken)
+            .then(console.log("Saved the item as favorite"))
             .catch(err => console.log("Couldn't save the item as favorite"));
+        await axios.get(`${BASE_URL}/user/favorites`, userToken)
+        .then(res => res.data)
+        .then(res => setFavoriteItems(res))
+        setToggle(!toggleFav)
     }
 
-    const removeItemFromFavorites = (item) => {
-        axios.delete(`${BASE_URL}/item/${item._id}/favorite`, userToken)
-            .then(res => console.log("Removed the item from favorites"))
-            .catch(err => console.log("Couldn't remove the item from favorites"));
+    const removeItemFromFavorites = async (item) => {
+        await axios.delete(`${BASE_URL}/item/${item._id}/favorite`, userToken)
+            .then(console.log("Unsaved the item"))
+            .catch(err => console.log("Couldn't unsave the item"));
+        await axios.get(`${BASE_URL}/user/favorites`, userToken)
+            .then(res => res.data)
+            .then(res => setFavoriteItems(res))
+        setToggle(!toggleFav)
+
     }
 
-    useEffect(() => {
+    useEffect(async () => {
         if (loggedIn != null) {
-            axios.get(`${BASE_URL}/user/favorites`, userToken)
+            await axios.get(`${BASE_URL}/user/favorites`, userToken)
                 .then(res => setFavoriteItems(res.data))
-                .catch(err => "Couldn't get user favorites")
+                .catch(err => console.log("Couldn't get user favorites"))
         }
-    }, [addItemToFavorites, removeItemFromFavorites])
+    }, [toggleFav, !toggleFav])
 
     return (
         <div>
@@ -48,15 +59,24 @@ const ItemCard = (props) => {
                             </Row>
                             <CardSubtitle tag="h6" className="mb-2 text-muted">{item.condition}</CardSubtitle>
                             <CardText style={{ wordBreak: "break-word" }}>{item.description}</CardText>
-                            {loggedIn ?
+                            {loggedIn &&
                                 <footer>
                                     <div className="align-items-center justify-content-end d-flex">
-                                        {!favoriteItems.includes(`${item._id}`) ? <p style={{ fontSize: "18px", margin: "0" }} className="mr-2">Save</p> : <p style={{ fontSize: "18px", margin: "0" }} className="mr-2">Unsave</p>}
-                                        {!favoriteItems.includes(`${item._id}`) ? <FontAwesomeIcon color="red" style={{ cursor: "pointer", fontSize: "25px" }} onClick={() => addItemToFavorites(item)} className="mr-2 awesome-icon" icon={regularHeart}></FontAwesomeIcon> : <FontAwesomeIcon style={{ cursor: "pointer", fontSize: "25px" }} color="red" onClick={() => removeItemFromFavorites(item)} className=" awesome-icon" icon={solidHeart}></FontAwesomeIcon>}
+                                        {!favoriteItems.includes(`${item._id}`) 
+                                        ?<>
+                                         <p style={{ fontSize: "18px", margin: "0" }} className="mr-2">Save</p> 
+                                          <FontAwesomeIcon color="red" style={{ cursor: "pointer", fontSize: "25px" }} 
+                                            onClick={() => addItemToFavorites(item)} className="mr-2 awesome-icon" icon={regularHeart}>
+                                          </FontAwesomeIcon> 
+                                          </>
+                                        :<>
+                                         <p style={{ fontSize: "18px", margin: "0" }} className="mr-2">Unsave</p>
+                                          <FontAwesomeIcon style={{ cursor: "pointer", fontSize: "25px" }} color="red" 
+                                            onClick={() => removeItemFromFavorites(item)} className=" awesome-icon" icon={solidHeart}>
+                                          </FontAwesomeIcon>
+                                          </>}
                                     </div>
                                 </footer>
-                                :
-                                null
                             }
                         </CardBody>
                     </div>
