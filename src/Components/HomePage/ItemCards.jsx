@@ -33,7 +33,6 @@ const ItemCard = (props) => {
             .then(res => res.data)
             .then(res => setFavoriteItems(res))
         setToggle(!toggleFav)
-
     }
 
     useEffect(async () => {
