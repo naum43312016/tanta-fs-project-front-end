@@ -43,7 +43,7 @@ const SignIn = (userDetails, setAuthenticated) => {
       (res) => res.status === 200 ? (localStorage.setItem("token", res.data.token), signInSuccess(), localStorage.setItem("firstName", res.data.user.firstName), localStorage.setItem("sessionID", res.data.user._id),
         setAuthenticated(true)) : null
     )
-    .catch((err) => console.error(err));
+    .catch((err) => console.log(err.response.data));
 };
 
 
