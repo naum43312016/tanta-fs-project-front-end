@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import { Row, CardBody, CardTitle, CardSubtitle, CardText, Spinner } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -55,8 +55,8 @@ const ItemCard = (props) => {
                         </Link>
                         <CardBody className="overflow-dots">
                             <Row>
-                                <CardTitle tag="h5" className="col-10">{item.name}</CardTitle>
-                                <p>{item.price} <FontAwesomeIcon style={{ color: "orange", fontSize: "20px" }} icon={faCoins} /></p>
+                                <CardTitle tag="h5" className="col-9">{item.name}</CardTitle>
+                                <p className="ml-1">{item.price} <FontAwesomeIcon style={{ color: "orange", fontSize: "20px" }} icon={faCoins} /></p>
                             </Row>
                             <CardSubtitle tag="h6" className="mb-2 text-muted">{item.condition}</CardSubtitle>
                             <CardText style={{ wordBreak: "break-word" }}>{item.description}</CardText>
@@ -65,21 +65,25 @@ const ItemCard = (props) => {
                                     <div className="align-items-center justify-content-end d-flex">
                                         {!favoriteItems.includes(`${item._id}`)
                                             ? <>
-                                                <p style={{ fontSize: "18px", margin: "0" }} className="mr-2">Save</p>
                                                 {!isLoading ?
-                                                    <FontAwesomeIcon color="red" style={{ cursor: "pointer", fontSize: "25px" }}
-                                                        onClick={() => addItemToFavorites(item)} className="mr-2 awesome-icon" icon={regularHeart}>
-                                                    </FontAwesomeIcon>
+                                                    <>
+                                                        <p style={{ fontSize: "18px", margin: "0" }} className="mr-2">Save</p>
+                                                        <FontAwesomeIcon color="red" style={{ cursor: "pointer", fontSize: "25px" }}
+                                                            onClick={() => addItemToFavorites(item)} className="mr-2 awesome-icon" icon={regularHeart}>
+                                                        </FontAwesomeIcon>
+                                                    </>
                                                     :
                                                     <Spinner color="danger" className="card-spinner"></Spinner>
                                                 }
                                             </>
                                             : <>
-                                                <p style={{ fontSize: "18px", margin: "0" }} className="mr-2">Unsave</p>
                                                 {!isLoading ?
-                                                    <FontAwesomeIcon style={{ cursor: "pointer", fontSize: "25px" }} color="red"
-                                                        onClick={() => removeItemFromFavorites(item)} className=" awesome-icon" icon={solidHeart}>
-                                                    </FontAwesomeIcon>
+                                                    <>
+                                                        <p style={{ fontSize: "18px", margin: "0" }} className="mr-2">Unsave</p>
+                                                        <FontAwesomeIcon style={{ cursor: "pointer", fontSize: "25px" }} color="red"
+                                                            onClick={() => removeItemFromFavorites(item)} className=" awesome-icon" icon={solidHeart}>
+                                                        </FontAwesomeIcon>
+                                                    </>
                                                     :
                                                     <Spinner color="danger" className="card-spinner"></Spinner>
                                                 }
