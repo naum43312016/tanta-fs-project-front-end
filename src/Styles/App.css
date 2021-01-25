@@ -142,7 +142,7 @@ label {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 1em;
-  grid-row-gap: 1.5em;
+  grid-row-gap: 1em;
   grid-auto-rows: minmax(350px, auto);
   margin-bottom: 5%;
 }
