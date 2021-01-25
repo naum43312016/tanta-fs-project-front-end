@@ -141,9 +141,17 @@ label {
 .card-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 1em;
+  grid-gap: 1.5em;
   grid-auto-rows: minmax(350px, auto);
   margin-bottom: 5%;
+}
+
+.card-spinner {
+  font-size: 10px;
+}
+
+.card-spinner:hover {
+  font-size: 10px;
 }
 
 .overflow-dots {

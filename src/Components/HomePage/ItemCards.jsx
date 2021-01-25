@@ -71,7 +71,7 @@ const ItemCard = (props) => {
                                                         onClick={() => addItemToFavorites(item)} className="mr-2 awesome-icon" icon={regularHeart}>
                                                     </FontAwesomeIcon>
                                                     :
-                                                    <Spinner color="danger" style={{fontSize:"10px"}}></Spinner>
+                                                    <Spinner color="danger" className="card-spinner"></Spinner>
                                                 }
                                             </>
                                             : <>
@@ -81,7 +81,7 @@ const ItemCard = (props) => {
                                                         onClick={() => removeItemFromFavorites(item)} className=" awesome-icon" icon={solidHeart}>
                                                     </FontAwesomeIcon>
                                                     :
-                                                    <Spinner color="danger" style={{fontSize:"10px"}}></Spinner>
+                                                    <Spinner color="danger" className="card-spinner"></Spinner>
                                                 }
                                             </>}
                                     </div>
