@@ -11,11 +11,15 @@ import { useEffect } from 'react';
 
 const ItemDetails = (props) => {
     const [user, setUser] = useState('');
-    const [seller, setSeller] = useState('');
+    const [seller, setSeller] = useState(null);
     const history = useHistory();
     const sessionID = localStorage.getItem('sessionID')
 
-    useEffect(async () => {
+    // const renderSeller = async () => {
+        
+    // }
+
+    useEffect(() => {
         axios.get(`${BASE_URL}/user/${localStorage.getItem('sessionID')}`)
         .then(res => setUser(res.data))
         .catch(err => console.log("Couldn't find user"));
@@ -25,7 +29,7 @@ const ItemDetails = (props) => {
     }, [])
 
     const purchaseItem = async () => {
-        console.log(props.seller)
+        console.log(seller)
         if (user.coins < props.item.price) {
             return cantBuy();
         }
@@ -46,8 +50,8 @@ const ItemDetails = (props) => {
                         <h3 className="col-6">{props.item.condition}</h3>
                         <h5>{props.item.price} <FontAwesomeIcon style={{ color: "orange", fontSize: "20px" }} icon={faCoins} className="ml-2" /></h5>
                     </Row>
-                    <p style={{fontSize:"19px"}} className="mb-4">Seller : {seller.firstName} {seller.lastName}</p>
-                    <p style={{fontSize:"19px"}} className="mb-4">Address : {seller.address}</p>
+                    <p style={{fontSize:"19px"}} className="mb-4">Seller : {seller && seller.firstName} {seller && seller.lastName}</p>
+                    <p style={{fontSize:"19px"}} className="mb-4">Address : {seller && seller.address}</p>
                     <h5 className="mb-3">{props.item.category}</h5>
                     <p>{props.item.description}</p>
                     <a href={props.item.imageUrl} target="_blank" rel="noreferrer"><i></i>Full Image</a>

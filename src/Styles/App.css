@@ -143,6 +143,7 @@ label {
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1em;
   grid-auto-rows: minmax(350px, auto);
+  margin-bottom: 5%;
 }
 
 .overflow-dots {
@@ -195,20 +196,20 @@ label {
   }
 }
 
-.card-img {
-  background-size: cover;
-  background-position: center;
+.item-card {
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+  transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  transition-duration: 0.5s;
+  cursor: pointer;
   width: 100%;
-  animation-name: reverse-cardlift;
-  animation-duration: 0.6s;
 }
 
-.card-img:hover {
-  animation-name: cardlift;
-  animation-duration: 0.6s;
-  animation-fill-mode: forwards;
-  animation-timing-function: ease-in-out;
-  animation-delay: 0.1s;
+
+.item-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 }
 
 @media (max-width: 1300px) {
