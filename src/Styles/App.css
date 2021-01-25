@@ -154,6 +154,13 @@ label {
   font-size: 10px;
 }
 
+.card-img {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
 .overflow-dots {
   text-overflow: "ellipsis";
   overflow: "hidden";
