@@ -11,13 +11,14 @@ const MyItems = () => {
     const [allPurchasedItems, setAllPurchasedItems] = useState();
     const [cards, setCards] = useState([]);
 
-    const fetchFilteredItems = (array) => {
-        axios.get(BASE_URL + `/user/filter?type=${filter.toLowerCase()}`, { headers: { authorization: 'Bearer ' + localStorage.getItem('token') } })
+    const fetchFilteredItems = (array, initialRender) => {
+        axios.get(BASE_URL + `/user/filter?type=${initialRender ? initialRender.toLowerCase() : filter.toLowerCase()}`, { headers: { authorization: 'Bearer ' + localStorage.getItem('token') } })
             .then(res => setCards(array.filter(item => res.data.includes(item._id))))
             .catch(err => console.log("Couldn't get filtered items"));
     }
 
     useEffect(() => {
+        setTimeout(() => fetchFilteredItems(allItems, "Selling"))
         axios.get(BASE_URL + '/home/get-all-items')
             .then(res => setAllItems(res.data))
             .catch(err => null);
