@@ -203,11 +203,10 @@ label {
 }
 
 .item-title {
-  width: 80%;
   font-size: 35px;
   font-weight: 600;
   display: flex;
-  margin-top: 5%;
+  margin-top: 6%;
 }
 
 @media (max-width: 1300px) {
@@ -230,12 +229,6 @@ label {
   .card-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-  }
-  .item-info {
-    margin-left: 15%;
-  }
-  .item-title {
-    margin-left: 20%;
   }
 }
 

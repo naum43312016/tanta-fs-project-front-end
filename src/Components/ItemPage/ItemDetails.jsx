@@ -38,16 +38,17 @@ const ItemDetails = (props) => {
     }
 
     return (
-        <div style={{ width: "fit-content", marginLeft: "10%" }} className="item-info mb-5">
-            <div style={{ backgroundColor: "#F7F7F7" }} className="item-card">
-                <div />
+        <Row className="item-info mb-5 col-6 justify-content-center col-sm-7 col-10">
+            <Row style={{ backgroundColor: "#F7F7F7" }} className="item-card p-sm-4 align-items-center justify-content-center">
+                <div style={{ height: "fit-content" }} className="details-img d-flex justify-content-center text-center">
+                    <img src={props.item.imageUrl} style={{ maxWidth: "100%", maxHeight: "50%" }} alt="Item Image" className="rounded"></img>
+                </div>
                 <CardBody className="overflow-dots">
-                    <img src={props.item.imageUrl} style={{ maxWidth: "500px", maxHeight: "400px" }} alt="Item Image" className="rounded img-fluid"></img>
                     <div className="item-text">
                         <div className="mt-4">
                             <Row className="mb-4 align-items-center">
                                 <h3 className="col-6">{props.item.condition}</h3>
-                                <h5>{props.item.price} <FontAwesomeIcon style={{ color: "orange", fontSize: "20px" }} icon={faCoins} className="ml-2" /></h5>
+                                <h5 className="col-6">{props.item.price} <FontAwesomeIcon style={{ color: "orange", fontSize: "20px" }} icon={faCoins} /></h5>
                             </Row>
                             <p style={{ fontSize: "19px" }} className="mb-4">Seller : {seller && seller.firstName} {seller && seller.lastName}</p>
                             <p style={{ fontSize: "19px" }} className="mb-4">Address : {seller && seller.address}</p>
@@ -55,16 +56,13 @@ const ItemDetails = (props) => {
                             <p>{props.item.description}</p>
                             <a href={props.item.imageUrl} target="_blank" rel="noreferrer"><i></i>Full Image</a>
                         </div>
-                        <Button color="primary" className="mt-3 ml-n1W d-block border" onClick={purchaseItem}>Purchase</Button>
+                        <Row className="justify-content-center">
+                            <Button color="primary" className="mt-3 ml-n1W d-block border" onClick={purchaseItem}>Purchase</Button>
+                        </Row>
                     </div>
-                    <CardText style={{ wordBreak: "break-word" }}></CardText>
-                    <footer>
-                        <div className="align-items-center justify-content-end d-flex">
-                        </div>
-                    </footer>
                 </CardBody>
-            </div>
-        </div>
+            </Row>
+        </Row>
     )
 }
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container } from 'reactstrap';
+import { Container, Row } from 'reactstrap';
 import ItemDetails from './ItemDetails';
 import axios from 'axios';
 import BASE_URL from '../../Tools/URLs';
@@ -16,10 +16,14 @@ const ItemPage = (props) => {
     return (
         <Container className="item">
             {item &&
-                <>
-                    <p className="item-title mb-5">{item.name}</p>
-                    <ItemDetails item={item} />
-                </>}
+                <div>
+                    <Row className="justify-content-center">
+                        <p className="item-title mb-5">{item.name}</p>
+                    </Row>
+                    <div className="d-flex justify-content-center">
+                        <ItemDetails item={item} />
+                    </div>
+                </div>}
         </Container>
     )
 }
