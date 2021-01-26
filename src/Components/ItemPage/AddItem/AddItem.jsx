@@ -3,11 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react'
 import { Container, Form, Input, Button, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
-import '../../Styles/AddItem.css'
-import { invalidFields } from '../../Tools/WebsiteResponses';
-import { itemUploaded } from '../../Tools/WebsiteResponses';
+import '../../../Styles/AddItem.css'
+import { invalidFields } from '../../../Tools/WebsiteResponses';
+import { itemUploaded } from '../../../Tools/WebsiteResponses';
 import { Redirect } from 'react-router'
-import BASE_URL from '../../Tools/URLs';
+import BASE_URL from '../../../Tools/URLs';
 
 const AddItem = () => {
     const [itemInfos, setItemInfos] = useState(null)

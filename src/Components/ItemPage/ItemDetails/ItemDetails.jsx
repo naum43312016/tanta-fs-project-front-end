@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { Row, Button, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
+import { Row, Button, CardBody } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoins } from '@fortawesome/free-solid-svg-icons'
-import BASE_URL from '../../Tools/URLs';
+import BASE_URL from '../../../Tools/URLs';
 import axios from 'axios';
-import { confirmPurchase, itemPurchased, cantBuy } from '../../Tools/WebsiteResponses';
+import { confirmPurchase, itemPurchased, cantBuy } from '../../../Tools/WebsiteResponses';
 import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
 

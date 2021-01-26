@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Authentication } from './Contexts/Authentication';
-import { UserCoins } from './Contexts/UserCoins'
+import { Authentication } from '../../Contexts/Authentication';
+import { UserCoins } from '../../Contexts/UserCoins'
 import { Container } from "reactstrap";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import './Styles/App.css';
-import Home from './Components/HomePage/Home';
-import ProfileSettings from './Components/Profile/ProfileSettings';
-import TopNavBar from './Components/NavBars/TopNavBar';
-import MyItems from './Components/Profile/MyItems'
-import AddItem from './Components/ItemPage/AddItem'
-import ItemPage from './Components/ItemPage/ItemPage';
+import Home from '../HomePage/Home/Home';
+import ProfileSettings from '../Profile/ProfileSettings/ProfileSettings';
+import TopNavBar from '../NavBars/NavBars/TopNavBar';
+import MyItems from '../Profile/MyItems/MyItems'
+import AddItem from '../ItemPage/AddItem/AddItem'
+import ItemPage from '../ItemPage/ItemPage/ItemPage';
 import axios from 'axios';
-import BASE_URL from './Tools/URLs';
+import BASE_URL from '../../Tools/URLs';
+import '../../Styles/App.css';
 
 const App = () => {
   const [authenticated, setAuthenticated] = useState(false)
