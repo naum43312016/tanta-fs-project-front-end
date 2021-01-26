@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Filter from './Filter';
-import ItemCard from './ItemCards';
+import Filter from '../Filter/Filter';
+import ItemCard from '../ItemCards/ItemCards';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoins } from '@fortawesome/free-solid-svg-icons'
-import BASE_URL from '../../Tools/URLs';
+import BASE_URL from '../../../Tools/URLs';
 
 const Home = () => {
     const [search, setSearch] = useState('');

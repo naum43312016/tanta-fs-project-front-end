@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row } from 'reactstrap';
-import ItemDetails from './ItemDetails';
+import ItemDetails from '../ItemDetails/ItemDetails';
 import axios from 'axios';
-import BASE_URL from '../../Tools/URLs';
+import BASE_URL from '../../../Tools/URLs';
 
 const ItemPage = (props) => {
     const [item, setItem] = useState(null);

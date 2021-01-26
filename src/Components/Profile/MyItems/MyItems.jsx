@@ -1,9 +1,9 @@
 import { Button } from "reactstrap"
-import ItemCards from "../HomePage/ItemCards"
-import '../../Styles/MyItems.css'
+import ItemCards from "../../HomePage/ItemCards/ItemCards"
+import '../../../Styles/MyItems.css'
 import { useState, useEffect } from "react"
 import axios from 'axios';
-import BASE_URL from '../../Tools/URLs';
+import BASE_URL from '../../../Tools/URLs';
 
 const MyItems = () => {
     const [filter, setFilter] = useState("Selling")

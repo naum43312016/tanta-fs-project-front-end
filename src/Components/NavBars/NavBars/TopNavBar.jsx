@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Row, Button, Modal } from 'reactstrap';
-import { Authentication } from '../../Contexts/Authentication';
+import { Authentication } from '../../../Contexts/Authentication';
 import { Link, Route } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCog, faCoins, faHome, faPlus, faUser } from '@fortawesome/free-solid-svg-icons'
-import SignUp from '../LoginPage/SignUp';
-import Login from '../LoginPage/Login';
-import { confirmLogout } from '../../Tools/WebsiteResponses';
+import SignUp from '../../LoginPage/SignUp/SignUp';
+import Login from '../../LoginPage/Login/Login';
+import { confirmLogout } from '../../../Tools/WebsiteResponses';
 
 const TopNavBar = (props) => {
     const [openLogin, setOpenLogin] = useState(false);
