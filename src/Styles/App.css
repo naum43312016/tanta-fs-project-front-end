@@ -210,10 +210,6 @@ label {
   margin-top: 5%;
 }
 
-.item-text {
-  margin-top: 50px
-}
-
 @media (max-width: 1300px) {
   .card-container {
     display: grid;
