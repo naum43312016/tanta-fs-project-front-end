@@ -18,7 +18,6 @@ const MyItems = () => {
     }
 
     useEffect(() => {
-        setTimeout(() => fetchFilteredItems(allItems, "Selling"))
         axios.get(BASE_URL + '/home/get-all-items')
             .then(res => setAllItems(res.data))
             .catch(err => null);
@@ -34,7 +33,7 @@ const MyItems = () => {
         else if (filter === 'Purchased' || filter === 'Sold') {
             fetchFilteredItems(allPurchasedItems);
         }
-    }, [filter])
+    }, [cards])
 
     return (
         <div className="my-items-container mt-2">

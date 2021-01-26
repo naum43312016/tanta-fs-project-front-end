@@ -38,12 +38,10 @@ const ItemDetails = (props) => {
     }
 
     return (
-        <Row className="item-info mb-5 col-6 justify-content-center col-sm-7 col-10">
+        <Row className="mb-5 col-6 justify-content-center col-sm-10 col-md-7 col-12">
             <Row style={{ backgroundColor: "#F7F7F7" }} className="item-card p-sm-4 align-items-center justify-content-center">
-                <div style={{ height: "fit-content" }} className="details-img d-flex justify-content-center text-center">
-                    <img src={props.item.imageUrl} style={{ maxWidth: "100%", maxHeight: "50%" }} alt="Item Image" className="rounded"></img>
-                </div>
-                <CardBody className="overflow-dots">
+                <img src={props.item.imageUrl} style={{ maxWidth: "100%", minWidth: "280px", maxHeight: "350px", minHeight: "300px" }} alt="Item Image" className="rounded"></img>
+                <CardBody>
                     <div className="item-text">
                         <div className="mt-4">
                             <Row className="mb-4 align-items-center">

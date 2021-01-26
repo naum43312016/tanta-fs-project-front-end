@@ -50,7 +50,7 @@ const ItemCard = (props) => {
             <div style={{ width: "80%", marginLeft: "10%" }} className="card-container mt-5">
                 {props.cards.map((item) => {
                     return (<div key={item._id} id={item._id} style={{ backgroundColor: "#F7F7F7" }} className="item-card">
-                        <Link to={{ pathname: `/item/${item._id}`, state: item._id }}  >
+                        <Link to={{ pathname: `/item/${item._id}`}}  >
                             <div style={{ width: "100%", height: "200px", backgroundImage: `url(${item.imageUrl})` }} className="card-img" top="true" width="100%" alt={item.name} />
                         </Link>
                         <CardBody className="overflow-dots">

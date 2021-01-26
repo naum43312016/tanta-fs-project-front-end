@@ -19,18 +19,18 @@ const wrongCredentials = (message) => {
 const signUpSuccess = () => {
   return Swal.fire({
     title: 'Signed Up',
+    html: "<p>Thanks for signing up!</p><br></br><h5>Here is how Tanta works:</h5> At Tanta, users are unable to use any payment methods to receive more coins. We will give you 1 free coin for your first 5 uploads every month. To get more coins, you can upload and sell items. Price your items right, and you'll be rolling in digital coins in a jiffy 😉.</p>",
     icon: 'success',
-    timer: 1000,
-    showConfirmButton: false,
+    showConfirmButton: true,
   })
 }
 
 const signInSuccess = () => {
   return Swal.fire({
     title: 'Welcome back',
+    html: "<br></br><h5>Here's a little reminder of how Tanta works:</h5> At Tanta, users are unable to use any payment methods to receive more coins. We will give you 1 free coin for your first 5 uploads every month. To get more coins, you can upload and sell items. Let's see what you've got, literally 😁.</p>",
     icon: 'success',
-    timer: 1000,
-    showConfirmButton: false,
+    showConfirmButton: true,
   })
 }
 
