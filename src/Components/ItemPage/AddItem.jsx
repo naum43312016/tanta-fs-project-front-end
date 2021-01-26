@@ -47,13 +47,12 @@ const AddItem = () => {
             data.append('image', pic.selectedFile, `${Date.now()}-${pic.selectedFile.name}`)
         }
         axios.post(`${BASE_URL}/item`, data, { headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') } })
-            .then(itemUploaded())
-            .then(setRedirect(true)) // if success so set success & redirect to homepage
+            .then(res => itemUploaded())
+            .then(res => setRedirect(true))
             .catch(err => {
-                // fetch error message from server
                 const error = err.response.data
                 const errorMessages = error.message || error.category || error.name || error.condition || error.description || error.price
-                invalidFields(errorMessages) // else show error message
+                invalidFields(errorMessages)
             })
     }
 

@@ -7,16 +7,11 @@ import { faCog, faCoins, faHome, faPlus, faUser } from '@fortawesome/free-solid-
 import SignUp from '../LoginPage/SignUp';
 import Login from '../LoginPage/Login';
 import { confirmLogout } from '../../Tools/WebsiteResponses';
-import { UserCoins } from '../../Contexts/UserCoins'
-import axios from 'axios';
-import BASE_URL from '../../Tools/URLs';
 
 const TopNavBar = (props) => {
     const [openLogin, setOpenLogin] = useState(false);
     const [openSignup, setOpenSignup] = useState(false);
-
     const { authenticated, setAuthenticated } = useContext(Authentication)
-
 
     return (
         <>
