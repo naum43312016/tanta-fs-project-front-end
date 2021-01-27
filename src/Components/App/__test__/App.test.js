@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from '../App';
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+// import '@testing-library/user-event';
 
-describe("Mounting app", () => {
-    test('Rendering app', () => {
-        expect(true).toBe(true);
-    })
+test('Mounting App.jsx', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<App />, div);
+    const unmountedApp = ReactDOM.unmountComponentAtNode(div);
+    expect(unmountedApp).toBe(true);
 })
