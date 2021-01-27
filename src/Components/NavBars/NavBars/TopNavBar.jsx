@@ -33,7 +33,7 @@ const TopNavBar = (props) => {
                         <a href={"/my-items"}>
                             <FontAwesomeIcon style={{ color: "white", height: "25px" }} icon={faUser} size="2x" ></FontAwesomeIcon>
                         </a>
-                        <a to="/settings">
+                        <a href="/settings">
                             <FontAwesomeIcon style={{ color: "white", height: "25px" }} icon={faCog} size="2x"></FontAwesomeIcon>
                         </a>
                         <Button onClick={() => confirmLogout(setAuthenticated, setOpenSignup)} color="light" className="nav-button rounded">Logout</Button>
