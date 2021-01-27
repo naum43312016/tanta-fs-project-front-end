@@ -6,7 +6,7 @@ import { SignIn } from '../../../Tools/fetch';
 import { Authentication } from '../../../Contexts/Authentication';
 
 const Login = (props) => {
-  const { setAuthenticated }  = useContext(Authentication);
+  const { setAuthenticated } = useContext(Authentication);
   const [userInfos, setUserInfos] = useState({
     email: '',
     password: '',
@@ -20,12 +20,12 @@ const Login = (props) => {
       email: '',
       password: '',
     })
-    };
-  
+  };
+
   const handleChange = (event) => {
     setUserInfos({
       ...userInfos,
-      [event.target.name] : event.target.value
+      [event.target.name]: event.target.value
     })
   }
 
@@ -37,13 +37,13 @@ const Login = (props) => {
   return (
     <Container>
       <Row className="d-flex justify-content-end">
-        <Link to="/home">
+        <a href to="/home">
           <Button color="danger mr-3 mt-3" onClick={() => props.setOpenLogin(false)}>
             X
         </Button>
-        </Link>
+        </a>
       </Row>
-    <ModalHeader style={{backgroundColor: "#B1DEF5"}} className="mt-n4">Login</ModalHeader>
+      <ModalHeader style={{ backgroundColor: "#B1DEF5" }} className="mt-n4">Login</ModalHeader>
       <ModalBody>
         <Form>
           <FormGroup>
@@ -71,14 +71,12 @@ const Login = (props) => {
         <Button onClick={LoginUser} color="success">
           Login
           </Button>
-        <Link to="/signup">
-          <Button onClick={switchToSignUp} color="success">
-            I Don't Have An Account Yet
+
+        <Button onClick={switchToSignUp} color="success">
+          I Don't Have An Account Yet
           </Button>
-        </Link>
+
       </ModalFooter>
-
-
     </Container>
   );
 };
