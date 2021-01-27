@@ -14,7 +14,7 @@ const ItemPage = (props) => {
     }, [])
 
     return (
-        <Container className="item mt-4">
+        <Container className="item">
             {item &&
                 <div>
                     <Row className="justify-content-center">

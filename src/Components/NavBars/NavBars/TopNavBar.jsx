@@ -16,26 +16,26 @@ const TopNavBar = (props) => {
     return (
         <>
             <Row className="top-navbar">
-                <a href="/" style={{ textDecoration: "none" }} className="offset-1 col-4 tanta-logo">
+                <Link to="/" style={{ textDecoration: "none" }} className="offset-1 col-4 tanta-logo">
                     <h3 className="logo mt-2 pl-2">Tanta</h3>
-                </a>
+                </Link>
                 {authenticated ?
                     <>
                         <div style={{ marginRight: '10px' }}>
                             <span style={{ color: "white", fontWeight: "500", fontSize: "20px" }}>{props.coins}</span> <FontAwesomeIcon style={{ color: "#ffd700", height: "25px" }} icon={faCoins} size="2x"></FontAwesomeIcon>
                         </div>
-                        <a href={"/"}>
+                        <Link to="/">
                             <FontAwesomeIcon style={{ color: "white", height: "25px" }} icon={faHome} size="2x" ></FontAwesomeIcon>
-                        </a>
-                        <a href={"/add-item"}>
+                        </Link>
+                        <Link to="/add-item">
                             <FontAwesomeIcon style={{ color: "white", height: "25px" }} icon={faPlus} size="2x" ></FontAwesomeIcon>
-                        </a>
-                        <a href={"/my-items"}>
+                        </Link>
+                        <Link to="/my-items">
                             <FontAwesomeIcon style={{ color: "white", height: "25px" }} icon={faUser} size="2x" ></FontAwesomeIcon>
-                        </a>
-                        <a href="/settings">
+                        </Link>
+                        <Link to="/settings">
                             <FontAwesomeIcon style={{ color: "white", height: "25px" }} icon={faCog} size="2x"></FontAwesomeIcon>
-                        </a>
+                        </Link>
                         <Button onClick={() => confirmLogout(setAuthenticated, setOpenSignup)} color="light" className="nav-button rounded">Logout</Button>
                     </>
                     :
