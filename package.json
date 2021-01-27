@@ -8,9 +8,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "@fortawesome/react-fontawesome": "^0.1.14",
-    "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
-    "@testing-library/user-event": "github:testing-library/user-event",
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
     "dotenv": "^8.2.0",
@@ -22,6 +20,7 @@
     "react-modal": "^3.12.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "react-test-render": "^1.1.2",
     "reactstrap": "^8.8.1",
     "sweetalert2": "^10.13.0",
     "web-vitals": "^0.2.4"
@@ -51,8 +50,10 @@
     ]
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.12.11",
+    "@testing-library/dom": "^7.29.4",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/user-event": "github:testing-library/user-event",
     "@types/jest": "^26.0.20",
-    "babel-jest": "^26.6.3"
+    "jest-dom": "^4.0.0"
   }
 }
