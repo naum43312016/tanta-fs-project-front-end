@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Row, Button, Modal } from 'reactstrap';
 import { Authentication } from '../../../Contexts/Authentication';
-import { Link, Route, BrowserRouter } from 'react-router-dom';
+import { Link, Route, BrowserRouter, Router } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCog, faCoins, faHome, faPlus, faUser } from '@fortawesome/free-solid-svg-icons'
 import SignUp from '../../LoginPage/SignUp/SignUp';

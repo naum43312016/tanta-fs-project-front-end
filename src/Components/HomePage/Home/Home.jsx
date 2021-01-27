@@ -5,7 +5,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoins } from '@fortawesome/free-solid-svg-icons'
 import BASE_URL from '../../../Tools/URLs';
-import { Container, Row, Col, Button  } from 'reactstrap';
+import { Container, Row, Button  } from 'reactstrap';
 
 const Home = () => {
     const [search, setSearch] = useState('');
@@ -49,11 +49,11 @@ const Home = () => {
             .catch(err => console.log('There was an issue fetching the items of the requested category'));
     }
 
-    useEffect(() => { //getting all items on first app render
+    useEffect(() => {
             getCards()
     }, [updateCards, !updateCards])
 
-    useEffect(async() => { //fetching the right category
+    useEffect(async() => {
         await axios.get(BASE_URL + `/search/item?category=${category}&price=${price}&name=${search}`)
             .then(res => {
                 const availableCards = []
