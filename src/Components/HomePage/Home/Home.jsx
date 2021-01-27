@@ -5,6 +5,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoins } from '@fortawesome/free-solid-svg-icons'
 import BASE_URL from '../../../Tools/URLs';
+import { Container, Row, Col, Button  } from 'reactstrap';
 
 const Home = () => {
     const [search, setSearch] = useState('');
@@ -12,6 +13,7 @@ const Home = () => {
     const [price, setPrice] = useState('');
     const [cards, setCards] = useState([]);
     const [updateCards, setUpdateCards] = useState(false)
+    const [page, setPage] = useState(1)
 
     const getCards = async () => {
         await axios.get(BASE_URL + '/home/get-all-items')
@@ -25,6 +27,23 @@ const Home = () => {
             setCards(availableCards)
         })
         .catch(err => 'There was an issue fetching all the items');
+    }
+
+    const showMore = async () => {
+        console.log("SHOW MORE");
+        let currPage = page;
+        await axios.get(BASE_URL + `/search/item?category=${category}&price=${price}&name=${search}&page=${currPage+1}`)
+            .then(res => {
+                const availableCards = cards
+                res.data.items.forEach(item => {
+                    if(item.status == 'available') {
+                        availableCards.push(item)
+                    }
+                })
+                setCards(availableCards)
+                setPage(currPage+1)
+            })
+            .catch(err => console.log('There was an issue fetching the items of the requested category'));
     }
 
     useEffect(() => { //getting all items on first app render
@@ -53,6 +72,15 @@ const Home = () => {
                 {price === '' ? null : <>{category !== "" ? <p className="mr-sm-5 mr-3">|</p> : null}<p>{price} <FontAwesomeIcon style={{ color: "orange", fontSize: "20px" }} icon={faCoins} /></p></>}
             </div>
             <ItemCard cards={cards} setUpdateCards={setUpdateCards} updateCards={updateCards}/>
+            <Container>
+                <Row className="justify-content-md-center">
+                    <Col sm="3">
+                        <Button
+                        onClick={showMore}
+                        color="primary">Show More</Button>
+                    </Col>
+                </Row>
+            </Container>
         </div>
     )
 }
