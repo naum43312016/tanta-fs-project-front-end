@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Form, Label, Input, FormGroup, Button, ModalHeader, ModalBody, ModalFooter, Row } from "reactstrap";
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Router, Link } from "react-router-dom";
 import { SignIn } from '../../../Tools/fetch';
 import { Authentication } from '../../../Contexts/Authentication';
 
