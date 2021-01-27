@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Row, Button, Modal } from 'reactstrap';
 import { Authentication } from '../../../Contexts/Authentication';
-import { Link, Route, BrowserRouter } from 'react-router-dom';
+import { Link, Route, BrowserRouter, Router } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCog, faCoins, faHome, faPlus, faUser } from '@fortawesome/free-solid-svg-icons'
 import SignUp from '../../LoginPage/SignUp/SignUp';
@@ -40,9 +40,11 @@ const TopNavBar = (props) => {
                     </>
                     :
                     <>
-                        <Link to="/login">
-                            <Button color="light" className="nav-button rounded" onClick={() => setOpenLogin(true)}>Login/Signup</Button>
-                        </Link>
+                        <BrowserRouter>
+                            <Link to="/login">
+                                <Button color="light" className="nav-button rounded" onClick={() => setOpenLogin(true)}>Login/Signup</Button>
+                            </Link>
+                        </BrowserRouter>
                         <Modal isOpen={openLogin} className="login-modal">
                             <Route path="/login">
                                 <Login setOpenLogin={(bool) => setOpenLogin(bool)} setOpenSignup={(bool) => setOpenSignup(bool)} />
