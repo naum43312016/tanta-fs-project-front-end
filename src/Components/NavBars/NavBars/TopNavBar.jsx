@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Row, Button, Modal } from 'reactstrap';
 import { Authentication } from '../../../Contexts/Authentication';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, BrowserRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCog, faCoins, faHome, faPlus, faUser } from '@fortawesome/free-solid-svg-icons'
 import SignUp from '../../LoginPage/SignUp/SignUp';
@@ -16,26 +16,26 @@ const TopNavBar = (props) => {
     return (
         <>
             <Row className="top-navbar">
-                <Link style={{textDecoration:"none"}} className="offset-1 col-4 tanta-logo" to='/'>
+                <a href="/" style={{ textDecoration: "none" }} className="offset-1 col-4 tanta-logo">
                     <h3 className="logo mt-2 pl-2">Tanta</h3>
-                </Link>
+                </a>
                 {authenticated ?
-                    <>   
-                        <div style={{marginRight: '10px'}}> 
-                            <span style={{ color: "white", fontWeight:"500",fontSize: "20px"}}>{props.coins}</span> <FontAwesomeIcon style={{ color: "#ffd700", height: "25px"}} icon={faCoins} size="2x"></FontAwesomeIcon>
+                    <>
+                        <div style={{ marginRight: '10px' }}>
+                            <span style={{ color: "white", fontWeight: "500", fontSize: "20px" }}>{props.coins}</span> <FontAwesomeIcon style={{ color: "#ffd700", height: "25px" }} icon={faCoins} size="2x"></FontAwesomeIcon>
                         </div>
-                        <Link to={"/"}>
+                        <a href={"/"}>
                             <FontAwesomeIcon style={{ color: "white", height: "25px" }} icon={faHome} size="2x" ></FontAwesomeIcon>
-                        </Link>
-                        <Link to={"/add-item"}>
+                        </a>
+                        <a href={"/add-item"}>
                             <FontAwesomeIcon style={{ color: "white", height: "25px" }} icon={faPlus} size="2x" ></FontAwesomeIcon>
-                        </Link>
-                        <Link to={"/my-items"}>
+                        </a>
+                        <a href={"/my-items"}>
                             <FontAwesomeIcon style={{ color: "white", height: "25px" }} icon={faUser} size="2x" ></FontAwesomeIcon>
-                        </Link>
-                        <Link to="/settings">
+                        </a>
+                        <a to="/settings">
                             <FontAwesomeIcon style={{ color: "white", height: "25px" }} icon={faCog} size="2x"></FontAwesomeIcon>
-                        </Link>                       
+                        </a>
                         <Button onClick={() => confirmLogout(setAuthenticated, setOpenSignup)} color="light" className="nav-button rounded">Logout</Button>
                     </>
                     :
@@ -55,7 +55,7 @@ const TopNavBar = (props) => {
                 }
             </Row>
             <Row style={{ backgroundColor: "#7AE582", height: "30px" }} />
-            </>
+        </>
     )
 }
 

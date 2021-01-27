@@ -7,7 +7,9 @@ import '@testing-library/jest-dom';
 
 test('Mounting MyItems.jsx', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<MyItems />, div);
+    ReactDOM.render(
+        <MyItems />,
+        div);
     const unmountedApp = ReactDOM.unmountComponentAtNode(div);
     expect(unmountedApp).toBe(true);
 })

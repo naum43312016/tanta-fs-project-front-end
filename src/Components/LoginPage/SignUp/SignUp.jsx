@@ -47,7 +47,7 @@ const SignUp = (props) => {
         <a href="/home">
           <Button color="danger mr-3 mt-3" onClick={() => props.setOpenSignup(false)}>
             X
-                </Button>
+          </Button>
         </a>
       </Row>
       <ModalHeader style={{ backgroundColor: "#B1DEF5" }} className="mt-n4">Create Account</ModalHeader>
@@ -148,10 +148,10 @@ const SignUp = (props) => {
       <ModalFooter>
         <Button color="primary" disabled={(userInfos.firstName.length > 0 && userInfos.lastName.length > 0 && userInfos.email.length > 0 && userInfos.password.length > 0 && userInfos.confirmPassword.length > 0 && userInfos.phone.length > 0) ? false : true} onClick={submitUser} >
           Sign Up
-                  </Button>
+        </Button>
         <Button color="primary" onClick={switchToLogin} >
           I Already Have An Account
-                  </Button>
+        </Button>
       </ModalFooter>
     </Container>
   );

@@ -7,7 +7,9 @@ import '@testing-library/jest-dom';
 
 test('Mounting TopNavBar.jsx', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<TopNavBar />, div);
+    ReactDOM.render(        
+        <TopNavBar />,
+        div);
     const unmountedApp = ReactDOM.unmountComponentAtNode(div);
     expect(unmountedApp).toBe(true);
 })

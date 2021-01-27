@@ -37,7 +37,6 @@ const MyItems = () => {
 
     return (
         <div className="my-items-container mt-2">
-            <div> </div>
             <div className="items-filter">
                 <Button color="light" onClick={() => setFilter("Selling")}> Selling </Button>
                 <Button color="light" onClick={() => setFilter("Favorites")}> Favorites </Button>

@@ -6,8 +6,10 @@ import '@testing-library/jest-dom';
 
 
 test('Mounting ProfileSetting.jsx', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<ProfileSettings />, div);
+   const div = document.createElement('div');
+    ReactDOM.render(
+        <ProfileSettings />,
+        div);
     const unmountedApp = ReactDOM.unmountComponentAtNode(div);
     expect(unmountedApp).toBe(true);
 })
