@@ -33,7 +33,7 @@ const MyItems = () => {
         else if (filter === 'Purchased' || filter === 'Sold') {
             fetchFilteredItems(allPurchasedItems);
         }
-    }, [cards])
+    }, [cards && cards])
 
     return (
         <div className="my-items-container mt-2">

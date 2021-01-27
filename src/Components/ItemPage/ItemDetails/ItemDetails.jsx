@@ -15,7 +15,7 @@ const ItemDetails = (props) => {
     const history = useHistory();
     const sessionID = localStorage.getItem('sessionID')
 
-    useEffect(() => {
+    useEffect(async () => {
         axios.get(`${BASE_URL}/user/${localStorage.getItem('sessionID')}`)
             .then(res => setUser(res.data))
             .catch(err => console.log("Couldn't find user"));
@@ -25,7 +25,6 @@ const ItemDetails = (props) => {
     }, [])
 
     const purchaseItem = async () => {
-        console.log(seller)
         if (user.coins < props.item.price) {
             return cantBuy();
         }
