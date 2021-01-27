@@ -79,13 +79,9 @@ const Home = () => {
             <ItemCard cards={cards} setUpdateCards={setUpdateCards} updateCards={updateCards}/>
             {page<pageCount && 
             <Container>
-                <Row className="justify-content-md-center">
-                    <Col sm="3">
-                        <Button
-                        onClick={showMore}
-                        color="primary">Show More</Button>
-                    </Col>
-                </Row>
+            <Row className="justify-content-center">
+                <Button onClick={showMore} color="primary" className="mb-5 mt-n2">Show More</Button>
+            </Row>
             </Container>
             }
         </div>
