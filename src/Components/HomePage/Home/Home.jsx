@@ -14,17 +14,19 @@ const Home = () => {
     const [cards, setCards] = useState([]);
     const [updateCards, setUpdateCards] = useState(false)
     const [page, setPage] = useState(1)
-
+    const [pageCount,setPageCount] = useState(1);
     const getCards = async () => {
-        await axios.get(BASE_URL + '/home/get-all-items')
+        await axios.get(BASE_URL + '/search/item')
         .then(res => {
             const availableCards = []
-            res.data.forEach(item => {
+            res.data.items.forEach(item => {
                 if(item.status == 'available') {
                     availableCards.push(item)
                 }
             })
             setCards(availableCards)
+            setPageCount(res.data.pagesCount)
+            setPage(1)
         })
         .catch(err => 'There was an issue fetching all the items');
     }
@@ -42,6 +44,7 @@ const Home = () => {
                 })
                 setCards(availableCards)
                 setPage(currPage+1)
+                setPageCount(res.data.pagesCount)
             })
             .catch(err => console.log('There was an issue fetching the items of the requested category'));
     }
@@ -60,6 +63,8 @@ const Home = () => {
                     }
                 })
                 setCards(availableCards)
+                setPageCount(res.data.pagesCount)
+                setPage(1)
             })
             .catch(err => console.log('There was an issue fetching the items of the requested category'));
     }, [category, price, search])
@@ -72,6 +77,7 @@ const Home = () => {
                 {price === '' ? null : <>{category !== "" ? <p className="mr-sm-5 mr-3">|</p> : null}<p>{price} <FontAwesomeIcon style={{ color: "orange", fontSize: "20px" }} icon={faCoins} /></p></>}
             </div>
             <ItemCard cards={cards} setUpdateCards={setUpdateCards} updateCards={updateCards}/>
+            {page<pageCount && 
             <Container>
                 <Row className="justify-content-md-center">
                     <Col sm="3">
@@ -81,6 +87,7 @@ const Home = () => {
                     </Col>
                 </Row>
             </Container>
+            }
         </div>
     )
 }
