@@ -59,7 +59,7 @@ const ItemCard = (props) => {
                                 <p className="ml-1">{item.price} <FontAwesomeIcon style={{ color: "orange", fontSize: "20px" }} icon={faCoins} /></p>
                             </Row>
                             <CardSubtitle tag="h6" className="mb-2 text-muted">{item.condition}</CardSubtitle>
-                            <CardText style={{ wordBreak: "break-word" }}>{item.description}</CardText>
+                            <CardText style={{ maxHeight:"50px", overflow:"hidden",textOverflow:"ellipsis", whiteSpace: "nowrap", width:"150px" }}>{item.description}</CardText>
                             {loggedIn &&
                                 <footer>
                                     <div className="align-items-center justify-content-end d-flex">
