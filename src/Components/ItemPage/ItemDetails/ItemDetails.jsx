@@ -7,13 +7,23 @@ import axios from 'axios';
 import { confirmPurchase, itemPurchased, cantBuy } from '../../../Tools/WebsiteResponses';
 import { useHistory } from 'react-router-dom';
 import { useEffect } from 'react';
-
+// import SimpleImageSlider from "react-simple-image-slider";
 
 const ItemDetails = (props) => {
     const [user, setUser] = useState('');
     const [seller, setSeller] = useState(null);
     const history = useHistory();
     const sessionID = localStorage.getItem('sessionID')
+    const sliderImg = [{url: props.item.imageUrl}, {url: props.item.imageUrl}]
+    const sliderStyle = {
+        useGPURender: true,
+        showNavs: true,
+        showBullets: true,
+        navStyle: 1,
+        slideDuration: 0.5,
+        bgColor: "#000000",
+        slideIndexText: "",
+    };
 
     useEffect(() => {
         axios.get(`${BASE_URL}/user/${localStorage.getItem('sessionID')}`)
@@ -65,3 +75,18 @@ const ItemDetails = (props) => {
 }
 
 export default ItemDetails;
+
+
+/*
+<SimpleImageSlider images={sliderImg} showBullets={sliderStyle.showBullets} showNavs={sliderStyle.showNavs} useGPURender={sliderStyle.useGPURender} navStyle={sliderStyle.navStyle} slideDuration={sliderStyle.slideDuration} width="280px" height="300px" style={{ maxWidth: "100%", minWidth: "280px", maxHeight: "350px", minHeight: "300px", margin:"0 auto" }} alt="Item Image" className="rounded"></SimpleImageSlider>
+    const sliderImg = [{url: props.item.imageUrl}, {url: props.item.imageUrl}]
+    const sliderStyle = {
+        useGPURender: true,
+        showNavs: true,
+        showBullets: true,
+        navStyle: 1,
+        slideDuration: 0.5,
+        bgColor: "#000000",
+        slideIndexText: "",
+    };
+*/

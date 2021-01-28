@@ -19,6 +19,7 @@
     "react-modal": "^3.12.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "react-simple-image-slider": "^2.0.1",
     "react-test-render": "^1.1.2",
     "reactstrap": "^8.8.1",
     "sweetalert2": "^10.13.0",

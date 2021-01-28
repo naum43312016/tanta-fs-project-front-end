@@ -15,7 +15,7 @@ const AddItem = () => {
     const [categories, setCategories] = useState({ categories: null, selected: null })
     const [pic, setPic] = useState({ selectedFile: null })
     const [previewPic, setPreviewPic] = useState("")
-    const [redirect, setRedirect] = useState(false) // in case of success
+    const [redirect, setRedirect] = useState(false)
 
     const toggle = () => setDropdownOpen(prevState => !prevState);
 
@@ -64,7 +64,7 @@ const AddItem = () => {
 
     if (redirect) {
         return (
-            <Redirect to={BASE_URL} />
+            <Redirect to={"/"} />
         )
     }
     return (

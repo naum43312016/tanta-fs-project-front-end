@@ -276,3 +276,8 @@ label {
     margin-top: 23%;
   }
 }
+
+.img-detail:hover {
+  outline: none;
+  border: none;
+}

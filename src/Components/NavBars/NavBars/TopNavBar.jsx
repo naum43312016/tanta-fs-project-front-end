@@ -43,12 +43,12 @@ const TopNavBar = (props) => {
                             <Link to="/login">
                                 <Button color="light" className="nav-button rounded" onClick={() => setOpenLogin(true)}>Login/Signup</Button>
                             </Link>
-                        <Modal isOpen={openLogin} className="login-modal">
+                        <Modal style={{marginLeft:"33.5%"}} isOpen={openLogin} className="login-modal">
                             <Route path="/login">
                                 <Login setOpenLogin={(bool) => setOpenLogin(bool)} setOpenSignup={(bool) => setOpenSignup(bool)} />
                             </Route>
                         </Modal>
-                        <Modal isOpen={openSignup} className="signup-modal">
+                        <Modal style={{marginLeft:"33.5%"}} isOpen={openSignup} className="signup-modal">
                             <SignUp setOpenSignup={(bool) => setOpenSignup(bool)} setOpenLogin={(bool) => setOpenLogin(bool)} />
                         </Modal>
                     </>
